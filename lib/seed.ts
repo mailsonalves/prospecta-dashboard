@@ -20,7 +20,7 @@ export const seedNews: NewsItem[] = [
   demoNews({
     id: "demo-litio",
     title: "Lítio segue entre os minerais acompanhados pela pesquisa",
-    summary: "Texto simulado para demonstração da interface. Quando houver matéria real, o resumo descreveria o contexto do lítio sem copiar a reportagem.",
+    summary: "Texto simulado para demonstração da interface. Quando houver matéria real, o resumo descreverá o contexto do lítio sem copiar a reportagem.",
     source: "Brasil Mineral",
     sourceUrl: "https://brasilmineral.com.br",
     publishedAt: "2026-10-12T12:00:00.000Z",

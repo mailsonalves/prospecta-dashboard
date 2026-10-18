@@ -3,6 +3,7 @@ import { NewsRadar } from "@/components/news-radar";
 import { NewsSourcesFooter } from "@/components/news-sources-footer";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { loadNewsCatalog } from "@/lib/load-news-catalog";
 import { getPublishedNews } from "@/lib/repository";
 
 export const metadata: Metadata = {
@@ -11,8 +12,8 @@ export const metadata: Metadata = {
 };
 
 export default async function RadarPage() {
-  const news = await getPublishedNews();
+  const [news, catalog] = await Promise.all([getPublishedNews(), loadNewsCatalog()]);
   const sources = new Set(news.items.map((item) => item.source)).size;
   const keywords = new Set(news.items.flatMap((item) => item.keywords)).size;
-  return <><SiteHeader/><main className="radar-shell"><header className="radar-hero"><div className="eyebrow">Inteligência mineral · atualização programada</div><h1>Radar<br/><em>Prospecta.</em></h1><p>Notícias do setor mineral reunidas no acervo do Prospecta. A página inicial mostra as mais recentes; aqui dá para buscar, filtrar e percorrer o histórico. O resumo abre neste site e a matéria original continua na fonte.</p><div className="radar-stats"><span><b>{news.items.length}</b> notícias no acervo</span><span><b>{keywords}</b> sinais monitorados</span><span><b>{sources}</b> fontes com itens</span></div></header><NewsRadar items={news.items} demonstration={news.origin === "demonstration"}/></main><NewsSourcesFooter/><SiteFooter/></>;
+  return <><SiteHeader/><main className="radar-shell"><header className="radar-hero"><div className="eyebrow">Inteligência mineral · atualização programada</div><h1>Radar<br/><em>Prospecta.</em></h1><p>Notícias do setor mineral reunidas no acervo do Prospecta. A página inicial mostra as mais recentes; aqui dá para buscar, filtrar e percorrer o histórico. O resumo abre neste site e a matéria original continua na fonte.</p><p><a href="/radar/fontes">Ver catálogo de fontes</a>, com os grupos, ícones, objetivos e categorias.</p><div className="radar-stats"><span><b>{news.items.length}</b> notícias no acervo</span><span><b>{keywords}</b> sinais monitorados</span><span><b>{sources}</b> fontes com itens</span></div></header><NewsRadar items={news.items} demonstration={news.origin === "demonstration"} catalog={catalog}/></main><NewsSourcesFooter sources={catalog}/><SiteFooter/></>;
 }

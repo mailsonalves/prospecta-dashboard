@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { LegacyHomeScripts } from "@/components/legacy-home-scripts";
 import { applyHomepageNews } from "@/lib/homepage-news";
+import { loadNewsCatalog } from "@/lib/load-news-catalog";
 import { getPublishedNews } from "@/lib/repository";
 
 function getLegacyHomepageMarkup() {
@@ -25,8 +26,8 @@ function getLegacyHomepageMarkup() {
 }
 
 export default async function HomePage() {
-  const news = await getPublishedNews();
-  const markup = applyHomepageNews(getLegacyHomepageMarkup(), news.items);
+  const [news, catalog] = await Promise.all([getPublishedNews(), loadNewsCatalog()]);
+  const markup = applyHomepageNews(getLegacyHomepageMarkup(), news.items, catalog);
 
   return (
     <>

@@ -1,5 +1,5 @@
 import { previewText } from "@/lib/news-archive";
-import { approvedNewsSources } from "@/lib/news-sources";
+import { sourceGroups, type CatalogSourceLink } from "@/lib/news-source-groups";
 import type { NewsItem } from "@/lib/types";
 
 export function escapeHtml(value: string) {
@@ -34,12 +34,16 @@ export function renderRecentNewsCards(items: NewsItem[], limit = 3) {
     .join("");
 }
 
-export function renderNewsSourcesFooter() {
-  const items = approvedNewsSources.map((source) => `<li><a href="${escapeHtml(source.siteUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(source.name)}</a></li>`).join("");
-  return `<aside class="sources-footer" aria-label="Fontes de notícias"><details><summary>Ver todas as fontes</summary><p>Estes são os veículos acompanhados pelo Prospecta. O clique abre o site da fonte.</p><ul>${items}</ul></details></aside>`;
+export function renderNewsSourcesFooter(sources: CatalogSourceLink[]) {
+  const groups = sourceGroups.map((group) => {
+    const items = sources.filter((source) => source.group === group.slug).map((source) => `<li><a href="${escapeHtml(source.siteUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(source.name)}</a></li>`).join("");
+    if (!items) return "";
+    return `<section><h3>${escapeHtml(group.label)}</h3><ul>${items}</ul></section>`;
+  }).join("");
+  return `<aside class="sources-footer" aria-label="Catálogo de fontes"><h2>Fontes por grupo</h2><p>O <a href="/radar/fontes">catálogo completo</a> traz objetivos, categorias e o método de coleta de cada fonte.</p>${groups}</aside>`;
 }
 
-export function applyHomepageNews(markup: string, items: NewsItem[]) {
+export function applyHomepageNews(markup: string, items: NewsItem[], sources: CatalogSourceLink[] = []) {
   const source = markup.replaceAll("\r\n", "\n");
   const marker = `<p class="section-lead">Acompanhe o que acontece no mundo e como isso se conecta à pesquisa do Prospecta 4.0.</p>`;
   const cards = renderRecentNewsCards(items);
@@ -55,6 +59,6 @@ export function applyHomepageNews(markup: string, items: NewsItem[]) {
         <a href="/blog" class="blog-ver-btn">Conteúdo editorial →</a>
         <a href="/radar" class="blog-ver-btn blog-ver-btn-news">Ver blog completo →</a>
       </div>
-      ${renderNewsSourcesFooter()}`
+      ${renderNewsSourcesFooter(sources)}`
   );
 }

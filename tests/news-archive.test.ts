@@ -2,7 +2,16 @@ import { describe, expect, it } from "vitest";
 import { applyHomepageNews } from "@/lib/homepage-news";
 import { queryNewsArchive } from "@/lib/news-archive";
 import { approvedNewsSources } from "@/lib/news-sources";
+import { catalogSourceForItem, type CatalogSourceLink } from "@/lib/news-source-groups";
 import { seedNews } from "@/lib/seed";
+
+const catalog: CatalogSourceLink[] = [
+  { slug: "brasil-mineral", name: "Brasil Mineral", siteUrl: "https://brasilmineral.com.br", group: "midia" },
+  { slug: "poder360", name: "Poder360", siteUrl: "https://www.poder360.com.br", group: "imprensa" },
+  { slug: "ibram", name: "IBRAM", siteUrl: "https://ibram.org.br", group: "associacoes" },
+  { slug: "sgb-cprm", name: "SGB/CPRM", siteUrl: "https://www.sgb.gov.br", group: "ciencia" },
+  { slug: "finep", name: "Finep", siteUrl: "https://finep.gov.br", group: "governo" }
+];
 
 const homepage = `<section id="noticias"><p class="section-lead">Acompanhe o que acontece no mundo e como isso se conecta à pesquisa do Prospecta 4.0.</p>
       <div class="blog-grid blog-grid-2 reveal"><article class="blog-card blog-card-news" data-id="news1"></article></div>
@@ -39,17 +48,27 @@ describe("acervo de notícias", () => {
   });
 
   it("coloca as recentes na home e leva o blog completo ao radar", () => {
-    const html = applyHomepageNews(homepage, seedNews);
+    const html = applyHomepageNews(homepage, seedNews, catalog);
     expect(html).toContain('href="/radar/demo-fosfato-bahia"');
     expect(html).toContain("Ver blog completo");
     expect(html).toContain('href="/radar" class="blog-ver-btn blog-ver-btn-news"');
     expect(html).toContain('data-id="news1"');
     expect(html).toContain('href="/blog"');
     expect(html).toContain("Demonstração");
-    expect(html).toContain("Ver todas as fontes");
-    expect(html).toContain("https://poder360.com.br");
+    expect(html).toContain("Fontes por grupo");
+    expect(html).toContain("Imprensa e jornais");
+    expect(html).toContain("Associações e eventos");
+    expect(html).toContain("https://www.poder360.com.br");
     expect(html).toContain("Brasil Mineral");
-    const fromWindows = applyHomepageNews(homepage.replaceAll("\n", "\r\n"), seedNews);
-    expect(fromWindows).toContain("Ver todas as fontes");
+    const fromWindows = applyHomepageNews(homepage.replaceAll("\n", "\r\n"), seedNews, catalog);
+    expect(fromWindows).toContain("Fontes por grupo");
+  });
+
+  it("liga a notícia ao grupo do catálogo do professor", () => {
+    expect(catalogSourceForItem(seedNews.find((item) => item.source === "IBRAM")!, catalog)?.group).toBe("associacoes");
+    expect(catalogSourceForItem(seedNews.find((item) => item.source === "SGB")!, catalog)?.group).toBe("ciencia");
+    expect(catalogSourceForItem(seedNews.find((item) => item.source === "Finep")!, catalog)?.group).toBe("governo");
+    expect(catalogSourceForItem({ source: "EPBR", sourceUrl: "https://epbr.com.br" }, catalog)).toBeUndefined();
+    expect(catalogSourceForItem({ source: "Poder360", sourceUrl: "https://poder360.com.br" }, catalog)?.group).toBe("imprensa");
   });
 });

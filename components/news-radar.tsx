@@ -2,9 +2,21 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { ExternalLink, Search, Sparkles, TrendingUp } from "lucide-react";
+import { ChartLine, ExternalLink, Globe, Landmark, Lightbulb, Microscope, Newspaper, Pickaxe, Search, Sparkles, TrendingUp, Users, type LucideIcon } from "lucide-react";
 import { NEWS_PAGE_SIZE, newsSourcesInUse, previewText, queryNewsArchive, type NewsSort } from "@/lib/news-archive";
+import { catalogSourceForItem, sourceGroups, type CatalogSourceLink, type SourceGroupIcon, type SourceGroupSlug } from "@/lib/news-source-groups";
 import type { NewsCategory, NewsItem } from "@/lib/types";
+
+const groupIcons: Record<SourceGroupIcon, LucideIcon> = {
+  pickaxe: Pickaxe,
+  newspaper: Newspaper,
+  landmark: Landmark,
+  microscope: Microscope,
+  globe: Globe,
+  chart: ChartLine,
+  lightbulb: Lightbulb,
+  users: Users
+};
 
 const categoryLabels: Record<NewsCategory, string> = {
   mercado: "Mercado",
@@ -20,8 +32,9 @@ function formatDate(value: string) {
   return new Date(time).toLocaleDateString("pt-BR", { timeZone: "UTC" });
 }
 
-export function NewsRadar({ items, demonstration }: { items: NewsItem[]; demonstration: boolean }) {
+export function NewsRadar({ items, demonstration, catalog }: { items: NewsItem[]; demonstration: boolean; catalog: CatalogSourceLink[] }) {
   const [category, setCategory] = useState<NewsCategory | "todas">("todas");
+  const [group, setGroup] = useState<SourceGroupSlug | "todos">("todos");
   const [query, setQuery] = useState("");
   const [source, setSource] = useState("");
   const [from, setFrom] = useState("");
@@ -29,17 +42,21 @@ export function NewsRadar({ items, demonstration }: { items: NewsItem[]; demonst
   const [sort, setSort] = useState<NewsSort>("recent");
   const [page, setPage] = useState(1);
   const [filtersOpen, setFiltersOpen] = useState(false);
-  const sources = useMemo(() => newsSourcesInUse(items), [items]);
+  const groupedItems = useMemo(
+    () => group === "todos" ? items : items.filter((item) => catalogSourceForItem(item, catalog)?.group === group),
+    [catalog, group, items]
+  );
+  const sources = useMemo(() => newsSourcesInUse(groupedItems), [groupedItems]);
   const result = useMemo(
-    () => queryNewsArchive(items, { query, source, from, to, sort, category, page, pageSize: NEWS_PAGE_SIZE }),
-    [category, from, items, page, query, sort, source, to]
+    () => queryNewsArchive(groupedItems, { query, source, from, to, sort, category, page, pageSize: NEWS_PAGE_SIZE }),
+    [category, from, groupedItems, page, query, sort, source, to]
   );
   const terms = useMemo(() => {
     const counts = new Map<string, number>();
     items.forEach((item) => item.keywords.forEach((term) => counts.set(term, (counts.get(term) ?? 0) + 1)));
     return [...counts].sort((left, right) => right[1] - left[1]).slice(0, 8);
   }, [items]);
-  const filtersActive = Boolean(query || source || from || to || category !== "todas" || sort !== "recent");
+  const filtersActive = Boolean(query || source || from || to || category !== "todas" || sort !== "recent" || group !== "todos");
 
   function resetPage() {
     setPage(1);
@@ -52,12 +69,20 @@ export function NewsRadar({ items, demonstration }: { items: NewsItem[]; demonst
     setTo("");
     setSort("recent");
     setCategory("todas");
+    setGroup("todos");
     setPage(1);
   }
 
   return <>
     <section className="radar-controls" aria-label="Filtros do acervo">
       <label className="radar-search"><Search size={17}/><span className="sr-only">Buscar notícias</span><input value={query} onChange={(event) => { setQuery(event.target.value); resetPage(); }} placeholder="Busque mineral, tema ou tecnologia"/></label>
+      <div className="source-group-filters" role="group" aria-label="Grupo da fonte">
+        <button type="button" className={group === "todos" ? "active" : ""} onClick={() => { setGroup("todos"); resetPage(); }}>Todos os grupos</button>
+        {sourceGroups.map((entry) => {
+          const Icon = groupIcons[entry.icon];
+          return <button type="button" className={group === entry.slug ? "active" : ""} key={entry.slug} onClick={() => { setGroup(entry.slug); setSource(""); resetPage(); }}><Icon size={14} aria-hidden="true" />{entry.label}</button>;
+        })}
+      </div>
       <button type="button" className="filter-toggle" aria-expanded={filtersOpen} onClick={() => setFiltersOpen((open) => !open)}>{filtersOpen ? "Ocultar filtros" : filtersActive ? "Filtros ativos" : "Filtros"}</button>
       {filtersOpen && <div className="radar-filter-panel">
         <label className="radar-field">Fonte
