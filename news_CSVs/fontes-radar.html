@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fontes do Radar | Prospecta 4.0</title>
+<meta name="description" content="Catálogo de fontes do Radar Mineral do Prospecta 4.0, com objetivos e categorias de cada URL.">
+<meta name="theme-color" content="#102015">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+	--bg: #102015;
+	--bg2: #17291c;
+	--bg3: #203626;
+	--ink: #f8f4e9;
+	--muted: rgba(248,244,233,0.68);
+	--faint: rgba(248,244,233,0.36);
+	--green: #b7d36b;
+	--green2: #6ea04b;
+	--earth: #c7a46a;
+	--clay: #a8673f;
+	--line: rgba(248,244,233,0.12);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+	margin: 0;
+	background:
+		radial-gradient(circle at 20% 0%, rgba(183,211,107,0.11), transparent 34%),
+		linear-gradient(135deg, #0d1a12 0%, #102015 48%, #182516 100%);
+	background-attachment: fixed;
+	color: var(--ink);
+	font-family: 'Nunito', sans-serif;
+	font-size: 16px;
+	line-height: 1.6;
+	overflow-x: hidden;
+}
+body::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	pointer-events: none;
+	opacity: 0.08;
+	background-image:
+		linear-gradient(45deg, rgba(255,255,255,0.45) 1px, transparent 1px),
+		linear-gradient(-45deg, rgba(255,255,255,0.25) 1px, transparent 1px);
+	background-size: 26px 26px;
+}
+a { color: inherit; }
+h1, h2, h3, p { margin-top: 0; }
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+.topbar {
+	position: sticky; top: 0; z-index: 50;
+	display: flex; align-items: center; justify-content: space-between; gap: 16px;
+	padding: 14px 24px;
+	background: rgba(13,26,18,0.88);
+	border-bottom: 1px solid var(--line);
+	backdrop-filter: blur(20px);
+}
+.brand { font-weight: 900; letter-spacing: .04em; text-decoration: none; }
+.brand span {
+	font-family: 'JetBrains Mono', monospace; font-size: .6rem; font-weight: 700; color: var(--green);
+	background: rgba(183,211,107,0.12); border: 1px solid rgba(183,211,107,0.28); padding: 2px 6px; border-radius: 4px; margin-left: 6px; vertical-align: middle;
+}
+.topbar nav { display: flex; gap: 20px; font-size: .85rem; font-weight: 800; }
+.topbar nav a { text-decoration: none; color: var(--muted); }
+.topbar nav a:hover { color: var(--green); }
+
+.section { position: relative; z-index: 1; padding: 90px 24px; max-width: 1180px; margin: 0 auto; }
+.section-header { margin-bottom: 44px; }
+.section-label {
+	display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+	font-family: 'JetBrains Mono', monospace; font-size: .72rem; font-weight: 700; color: var(--green);
+	letter-spacing: .16em; text-transform: uppercase;
+}
+.section-label::before { content: ''; width: 24px; height: 1px; background: var(--green); }
+.page-h1 { font-size: clamp(2.6rem, 6vw, 5.2rem); font-weight: 900; line-height: .95; margin: 0 0 22px; max-width: 900px; }
+.page-h1 em { font-style: italic; color: var(--green); }
+.section-h2 { font-size: clamp(2rem, 4.2vw, 3.4rem); font-weight: 900; line-height: 1.06; max-width: 880px; margin-bottom: 16px; }
+.section-lead { font-size: 1.08rem; color: var(--muted); max-width: 760px; line-height: 1.75; }
+.divider { position: relative; z-index: 1; height: 1px; background: linear-gradient(to right, transparent, var(--line) 18%, var(--line) 82%, transparent); }
+
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 4px; margin-top: 44px; }
+.stat { background: rgba(23,41,28,0.82); border: 1px solid var(--line); border-radius: 8px; padding: 20px 22px; }
+.stat b { display: block; font-family: 'JetBrains Mono', monospace; font-size: 1.9rem; color: var(--green); line-height: 1.1; }
+.stat span { color: var(--muted); font-size: .85rem; }
+
+.filters {
+	background: rgba(13,26,18,0.92);
+	border: 1px solid var(--line); border-radius: 8px;
+	padding: 16px; margin-bottom: 22px;
+	display: grid; gap: 12px;
+}
+.filter-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.filter-row > .mono { font-size: .62rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); min-width: 92px; }
+.search {
+	flex: 1 1 260px; min-width: 0;
+	background: rgba(248,244,233,0.06); border: 1px solid var(--line); border-radius: 8px;
+	color: var(--ink); padding: 10px 14px; font: inherit; outline: none;
+}
+.search:focus { border-color: rgba(183,211,107,0.45); }
+.chip {
+	font-family: 'JetBrains Mono', monospace; font-size: .62rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+	padding: 6px 11px; border-radius: 999px; cursor: pointer;
+	background: rgba(248,244,233,0.04); border: 1px solid var(--line); color: var(--muted);
+	transition: background .16s, color .16s, border-color .16s;
+}
+.chip:hover { border-color: rgba(183,211,107,0.35); color: var(--ink); }
+.chip[aria-pressed="true"] { background: var(--green); border-color: var(--green); color: #132012; }
+.count-line { font-size: .85rem; color: var(--muted); }
+.count-line b { color: var(--ink); }
+.reset { background: none; border: 0; color: var(--green); font: inherit; font-weight: 800; cursor: pointer; padding: 0; margin-left: 8px; }
+
+.source-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 4px; }
+.source-card {
+	background: rgba(23,41,28,0.82); border: 1px solid var(--line); border-radius: 8px;
+	padding: 24px; display: flex; flex-direction: column; gap: 12px; min-width: 0;
+	transition: background .18s, border-color .18s, transform .18s;
+}
+.source-card:hover { background: var(--bg3); border-color: rgba(183,211,107,0.25); transform: translateY(-2px); }
+.card-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.ico {
+	--c: var(--green);
+	flex: none; width: 30px; height: 30px; border-radius: 6px; display: grid; place-items: center;
+	color: var(--c); background: color-mix(in srgb, var(--c) 14%, transparent); border: 1px solid color-mix(in srgb, var(--c) 45%, transparent);
+}
+.ico svg { width: 16px; height: 16px; }
+.ico.sm { width: 20px; height: 20px; border-radius: 4px; }
+.ico.sm svg { width: 12px; height: 12px; }
+.card-kind { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.card-kind .card-type { color: var(--c); }
+.chip.with-ico { display: inline-flex; align-items: center; gap: 7px; padding-left: 5px; }
+.chip.with-ico .ico { border-radius: 999px; }
+.chip[aria-pressed="true"] .ico { --c: #132012; }
+.group-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.group-pill { display: flex; align-items: center; gap: 10px; padding: 9px 14px 9px 9px; background: rgba(23,41,28,0.82); border: 1px solid var(--line); border-radius: 8px; }
+.group-pill strong { font-weight: 800; font-size: .95rem; }
+.group-pill small { font-family: 'JetBrains Mono', monospace; color: var(--faint); font-size: .7rem; }
+.group-pill p { margin: 0; color: var(--faint); font-size: .74rem; line-height: 1.4; }
+.card-type { font-family: 'JetBrains Mono', monospace; font-size: .6rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--green); }
+.method { font-family: 'JetBrains Mono', monospace; font-size: .56rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; border: 1px solid var(--line); color: var(--faint); white-space: nowrap; }
+.method.rss { color: var(--green); border-color: rgba(183,211,107,0.3); background: rgba(183,211,107,0.08); }
+.method.referencia { color: var(--earth); border-color: rgba(199,164,106,0.3); }
+.source-card h3 { font-size: 1.15rem; font-weight: 800; line-height: 1.3; margin: 0; }
+.url { font-family: 'JetBrains Mono', monospace; font-size: .72rem; color: var(--muted); text-decoration: none; overflow-wrap: anywhere; }
+.url:hover { color: var(--green); text-decoration: underline; }
+.url.feed { color: var(--faint); }
+.meta { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: .8rem; color: var(--muted); }
+.meta dt { font-family: 'JetBrains Mono', monospace; font-size: .58rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); padding-top: 3px; }
+.meta dd { margin: 0; }
+.dots { letter-spacing: 2px; color: var(--green); }
+.dots i { font-style: normal; color: rgba(248,244,233,0.16); }
+.region { color: var(--earth); font-size: .75rem; margin-left: 6px; }
+.use { font-size: .84rem; color: var(--muted); line-height: 1.65; margin: 0; }
+.tag-group { display: flex; flex-direction: column; gap: 6px; }
+.tag-group > span { font-family: 'JetBrains Mono', monospace; font-size: .56rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+	font-family: 'JetBrains Mono', monospace; font-size: .58rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+	padding: 3px 9px; border-radius: 999px;
+	background: rgba(183,211,107,0.08); border: 1px solid rgba(183,211,107,0.22); color: var(--green);
+}
+.tag.inferida { background: transparent; border-style: dashed; color: rgba(183,211,107,0.72); }
+.tag.cat { background: rgba(199,164,106,0.08); border-color: rgba(199,164,106,0.28); color: var(--earth); }
+.empty { padding: 60px 20px; text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: 8px; }
+
+.explain-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 4px; }
+.explain-card { background: rgba(23,41,28,0.82); border: 1px solid var(--line); border-radius: 8px; padding: 26px; }
+.explain-card .card-type { display: flex; justify-content: space-between; gap: 10px; }
+.explain-card .card-type b { color: var(--faint); font-weight: 700; }
+.explain-card h3 { font-size: 1.2rem; line-height: 1.25; margin: 12px 0 10px; }
+.explain-card p { color: var(--muted); line-height: 1.7; margin: 0; font-size: .92rem; }
+.explain-card .origin { margin-top: 12px; font-size: .78rem; color: var(--faint); }
+.explain-card.cat .card-type { color: var(--earth); }
+.legend { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px 32px; margin-top: 8px; }
+.legend div { display: flex; flex-direction: column; gap: 8px; }
+.legend p { color: var(--muted); font-size: .88rem; line-height: 1.65; margin: 0; }
+.subhead { font-size: 1.5rem; font-weight: 900; margin: 64px 0 10px; }
+.subhead + p { color: var(--muted); max-width: 760px; margin-bottom: 26px; line-height: 1.7; }
+
+footer { position: relative; z-index: 1; border-top: 1px solid var(--line); padding: 32px 24px; text-align: center; color: var(--faint); font-size: .82rem; }
+
+@media (max-width: 900px) {
+	.stats { grid-template-columns: repeat(2, minmax(0,1fr)); }
+	.topbar nav { display: none; }
+	.filters { position: static; }
+}
+@media (max-width: 620px) {
+	.section { padding: 64px 16px; }
+	.source-grid, .explain-grid { grid-template-columns: 1fr; }
+	.filter-row > .mono { min-width: 100%; }
+	.source-card { padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+	<a href="#topo" class="brand">PROSPECTA <span>4.0</span></a>
+	<nav aria-label="Seções da página">
+		<a href="#fontes">Fontes</a>
+		<a href="#objetivos">Objetivos</a>
+		<a href="#categorias">Categorias</a>
+		<a href="#tipos">Tipos</a>
+		<a href="#legenda">Legenda</a>
+	</nav>
+</header>
+
+<main>
+	<section class="section" id="topo">
+		<div class="section-label">Radar Mineral · Catálogo de fontes</div>
+		<h1 class="page-h1">De onde vem a <em>informação</em> do Radar.</h1>
+		<p class="section-lead">
+			Cada fonte acompanhada pelo Radar Mineral, com o link original, os <strong>objetivos</strong> a que serve
+			e as <strong>categorias</strong> de notícia que costuma produzir. As definições de objetivos e categorias
+			estão no fim da página.
+		</p>
+		<div class="stats" id="stats"></div>
+	</section>
+
+	<div class="divider"></div>
+
+	<section class="section" id="fontes">
+		<div class="section-header">
+			<div class="section-label">Fontes</div>
+			<h2 class="section-h2">Todas as URLs, classificadas.</h2>
+			<p class="section-lead">Filtre por objetivo, categoria ou método de coleta. Objetivo com borda tracejada foi inferido a partir do uso da fonte, e não das planilhas de objetivos.</p>
+		</div>
+
+		<div class="filters" role="search">
+			<div class="filter-row">
+				<label class="mono" for="q">Buscar</label>
+				<input class="search" id="q" type="search" placeholder="Nome, URL, tipo, escopo ou uso">
+			</div>
+			<div class="filter-row" id="f-grupo"><span class="mono">Tipo</span></div>
+			<div class="filter-row" id="f-objetivo"><span class="mono">Objetivo</span></div>
+			<div class="filter-row" id="f-categoria"><span class="mono">Categoria</span></div>
+			<div class="filter-row" id="f-coleta"><span class="mono">Coleta</span></div>
+			<div class="count-line" aria-live="polite"><span id="count"></span><button class="reset" id="reset" type="button">Limpar filtros</button></div>
+		</div>
+
+		<div class="source-grid" id="grid"></div>
+	</section>
+
+	<div class="divider"></div>
+
+	<section class="section" id="objetivos">
+		<div class="section-header">
+			<div class="section-label">Objetivos</div>
+			<h2 class="section-h2">Para que cada fonte serve.</h2>
+			<p class="section-lead">
+				O objetivo diz <strong>por que</strong> acompanhamos uma fonte. Os nove objetivos unificam as duas planilhas
+				de prioridades (fontes brasileiras e internacionais). Uma fonte pode atender a vários objetivos, e cada notícia
+				coletada herda os objetivos da fonte de onde veio.
+			</p>
+		</div>
+		<div class="explain-grid" id="objetivos-grid"></div>
+
+		<h3 class="subhead" id="categorias">Categorias</h3>
+		<p>
+			A categoria diz <strong>sobre o que</strong> é a notícia. São as mesmas cinco categorias usadas nos filtros do
+			Radar público. Na fonte, indicam o tipo de conteúdo que ela costuma publicar e servem de dica para a IA; em cada
+			notícia, a categoria final é escolhida item a item.
+		</p>
+		<div class="explain-grid" id="categorias-grid"></div>
+
+		<h3 class="subhead" id="tipos">Tipos de fonte</h3>
+		<p>
+			O tipo diz <strong>quem publica</strong>. A cor e o ícone de cada cartão indicam o grupo da fonte; o rótulo
+			ao lado do ícone traz o tipo detalhado.
+		</p>
+		<div class="group-grid" id="grupos-grid"></div>
+
+		<h3 class="subhead" id="legenda">Como ler os cartões</h3>
+		<p>Os demais campos de cada fonte seguem as escalas abaixo.</p>
+		<div class="legend">
+			<div>
+				<span class="tags"><span class="tag">objetivo</span><span class="tag inferida">objetivo</span></span>
+				<p>Borda contínua: o vínculo vem das planilhas de objetivos. Borda tracejada: vínculo inferido pelo uso e tipo da fonte, pendente de revisão.</p>
+			</div>
+			<div>
+				<span class="tags"><span class="method rss">rss</span><span class="method">manual</span><span class="method referencia">referência</span></span>
+				<p><b>RSS</b>: feed verificado, pode entrar na coleta automática. <b>Manual</b>: sem feed acessível; acompanhamento manual. <b>Referência</b>: acesso pago ou restrito; usada para checar fatos.</p>
+			</div>
+			<div>
+				<span class="dots">●●●<i>●</i></span>
+				<p><b>Prioridade</b> e <b>confiabilidade</b> de 1 a 4: Baixa, Média, Alta e Muito alta. A prioridade regional (ex.: <span class="region">BA ●●●●</span>) vale quando a notícia é sobre aquela UF.</p>
+			</div>
+		</div>
+	</section>
+</main>
+
+<footer>Prospecta 4.0 · Radar Mineral · Catálogo gerado a partir de <span class="mono">data/news_sources.csv</span> em 18/10/2026</footer>
+
+<script type="application/json" id="catalog-data">{"sources": [{"slug": "anm", "nome": "ANM", "site_url": "https://www.gov.br/anm", "feed_url": "https://www.gov.br/anm/rss.xml", "metodo_coleta": "rss", "idioma": "pt", "tipo": "orgao_oficial", "escopo": "Brasil", "confiabilidade": 4, "prioridade": 4, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["politica", "exploracao"], "objetivos_tabela": ["dados_oficiais_regulacao", "minerais_criticos"], "objetivos_inferidos": [], "origem": ["brasil"], "melhor_uso": "Títulos minerários, fiscalização, CFEM, estatísticas e minerais críticos.", "grupo": "governo"}, {"slug": "iea", "nome": "IEA — Agência Internacional de Energia", "site_url": "https://www.iea.org", "feed_url": "", "metodo_coleta": "manual", "idioma": "en", "tipo": "organizacao_internacional", "escopo": "Global", "confiabilidade": 4, "prioridade": 4, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado", "politica"], "objetivos_tabela": ["minerais_criticos"], "objetivos_inferidos": [], "origem": ["brasil", "internacional"], "melhor_uso": "Demanda por minerais críticos e cenários de transição energética. / Demanda por minerais críticos, baterias, cobre, lítio, níquel e terras raras.", "grupo": "internacional"}, {"slug": "reuters-commodities", "nome": "Reuters — Commodities", "site_url": "https://www.reuters.com/markets/commodities", "feed_url": "", "metodo_coleta": "manual", "idioma": "en", "tipo": "agencia_noticias", "escopo": "Global", "confiabilidade": 4, "prioridade": 4, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado"], "objetivos_tabela": ["noticias_setor", "precos_commodities"], "objetivos_inferidos": [], "origem": ["brasil", "internacional"], "melhor_uso": "Notícias rápidas e verificadas sobre commodities, empresas e geopolítica mineral. / Notícias rápidas e verificadas sobre commodities, geopolítica, empresas e mercados.", "grupo": "imprensa"}, {"slug": "sp-global-commodity-insights", "nome": "S&P Global Commodity Insights", "site_url": "https://www.spglobal.com/commodityinsights/en/commodities/metals", "feed_url": "", "metodo_coleta": "referencia", "idioma": "en", "tipo": "consultoria_dados", "escopo": "Global", "confiabilidade": 4, "prioridade": 4, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado"], "objetivos_tabela": ["minerais_criticos", "precos_commodities"], "objetivos_inferidos": [], "origem": ["brasil", "internacional"], "melhor_uso": "Preços, previsões, oferta-demanda, metais e minerais críticos. / Preços, oferta-demanda, previsões e inteligência de metais e commodities.", "grupo": "dados"}, {"slug": "sp-global-market-intelligence", "nome": "S&P Global Market Intelligence — Metals & Mining", "site_url": "https://www.spglobal.com/market-intelligence/en/news-insights/topics/metals-mining", "feed_url": "", "metodo_coleta": "referencia", "idioma": "en", "tipo": "consultoria_dados", "escopo": "Global", "confiabilidade": 4, "prioridade": 4, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado"], "objetivos_tabela": ["minerais_criticos", "precos_commodities"], "objetivos_inferidos": [], "origem": ["brasil", "internacional"], "melhor_uso": "Exploração, produção, M&A, previsões e ESG no setor mineral. / Exploração, descobertas, produção, aquisições e previsões de mercado.", "grupo": "dados"}, {"slug": "sgb-cprm", "nome": "SGB/CPRM", "site_url": "https://www.sgb.gov.br", "feed_url": "", "metodo_coleta": "manual", "idioma": "pt", "tipo": "instituicao_cientifica", "escopo": "Brasil", "confiabilidade": 4, "prioridade": 4, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["exploracao"], "objetivos_tabela": ["dados_oficiais_regulacao"], "objetivos_inferidos": ["dados_geologicos"], "origem": ["brasil"], "melhor_uso": "Geologia, mapas, levantamentos, recursos minerais e dados geocientíficos.", "grupo": "ciencia"}, {"slug": "usgs-nmic", "nome": "USGS — National Minerals Information Center", "site_url": "https://www.usgs.gov/centers/national-minerals-information-center", "feed_url": "https://www.usgs.gov/news/all/feed", "metodo_coleta": "rss", "idioma": "en", "tipo": "instituicao_cientifica", "escopo": "Global", "confiabilidade": 4, "prioridade": 4, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["exploracao", "mercado"], "objetivos_tabela": ["dados_geologicos", "tecnologia_pesquisa"], "objetivos_inferidos": [], "origem": ["brasil", "internacional"], "melhor_uso": "Estatísticas minerais, reservas, produção e minerais críticos. / Estatísticas de produção, reservas, consumo, comércio e minerais críticos.", "grupo": "ciencia"}, {"slug": "mining-com", "nome": "Mining.com", "site_url": "https://www.mining.com", "feed_url": "https://www.mining.com/feed/", "metodo_coleta": "rss", "idioma": "en", "tipo": "veiculo_especializado", "escopo": "Global", "confiabilidade": 3, "prioridade": 4, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado", "exploracao"], "objetivos_tabela": ["minerais_criticos", "noticias_setor"], "objetivos_inferidos": [], "origem": ["brasil", "internacional"], "melhor_uso": "Notícias globais de mineração, metais, empresas, projetos e minerais críticos. / Notícias diárias sobre mineração, metais, empresas, projetos, M&A e minerais críticos.", "grupo": "midia"}, {"slug": "bloomberg-commodities", "nome": "Bloomberg — Commodities", "site_url": "https://www.bloomberg.com/commodities", "feed_url": "", "metodo_coleta": "referencia", "idioma": "en", "tipo": "agencia_noticias", "escopo": "Global", "confiabilidade": 4, "prioridade": 3, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado"], "objetivos_tabela": ["precos_commodities"], "objetivos_inferidos": [], "origem": ["brasil", "internacional"], "melhor_uso": "Mercados, preços, grandes mineradoras e transição energética. / Preços, mercados futuros, grandes mineradoras e fluxos de investimento.", "grupo": "imprensa"}, {"slug": "british-geological-survey", "nome": "British Geological Survey — Minerals", "site_url": "https://www.bgs.ac.uk/geology-projects/minerals", "feed_url": "https://www.bgs.ac.uk/feed/", "metodo_coleta": "rss", "idioma": "en", "tipo": "instituicao_cientifica", "escopo": "Global/Reino Unido", "confiabilidade": 4, "prioridade": 3, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["exploracao"], "objetivos_tabela": ["dados_geologicos"], "objetivos_inferidos": [], "origem": ["internacional"], "melhor_uso": "Geologia econômica, recursos minerais, risco de suprimento e dados técnicos.", "grupo": "ciencia"}, {"slug": "financial-times-commodities", "nome": "Financial Times — Commodities", "site_url": "https://www.ft.com/commodities", "feed_url": "https://www.ft.com/commodities?format=rss", "metodo_coleta": "rss", "idioma": "en", "tipo": "jornal_economico", "escopo": "Global", "confiabilidade": 4, "prioridade": 3, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado"], "objetivos_tabela": [], "objetivos_inferidos": ["geopolitica_suprimentos", "precos_commodities"], "origem": ["internacional"], "melhor_uso": "Análise aprofundada de commodities, geopolítica mineral e mercados.", "grupo": "imprensa"}, {"slug": "ibama", "nome": "Ibama", "site_url": "https://www.gov.br/ibama", "feed_url": "https://www.gov.br/ibama/rss.xml", "metodo_coleta": "rss", "idioma": "pt", "tipo": "orgao_oficial", "escopo": "Brasil", "confiabilidade": 4, "prioridade": 3, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["sustentabilidade", "politica"], "objetivos_tabela": ["dados_oficiais_regulacao"], "objetivos_inferidos": ["sustentabilidade_ambiental"], "origem": ["brasil"], "melhor_uso": "Licenciamento, compensação ambiental e fiscalização socioambiental.", "grupo": "governo"}, {"slug": "oecd-minerals-metals", "nome": "OECD — Minerals and Metals", "site_url": "https://www.oecd.org/en/topics/minerals-and-metals.html", "feed_url": "", "metodo_coleta": "manual", "idioma": "en", "tipo": "organizacao_internacional", "escopo": "Global", "confiabilidade": 4, "prioridade": 3, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["politica", "sustentabilidade"], "objetivos_tabela": ["geopolitica_suprimentos"], "objetivos_inferidos": ["sustentabilidade_ambiental"], "origem": ["internacional"], "melhor_uso": "Cadeias de suprimento, due diligence, responsabilidade socioambiental e políticas públicas.", "grupo": "internacional"}, {"slug": "platts", "nome": "Platts — S&P Global", "site_url": "https://www.spglobal.com/platts/en", "feed_url": "", "metodo_coleta": "referencia", "idioma": "en", "tipo": "consultoria_dados", "escopo": "Global", "confiabilidade": 4, "prioridade": 3, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado"], "objetivos_tabela": ["precos_commodities"], "objetivos_inferidos": [], "origem": ["internacional"], "melhor_uso": "Preços de commodities, energia e matérias-primas ligadas à mineração.", "grupo": "dados"}, {"slug": "reuters-sustainable-business", "nome": "Reuters — Sustainable Business", "site_url": "https://www.reuters.com/sustainability", "feed_url": "", "metodo_coleta": "manual", "idioma": "en", "tipo": "agencia_noticias", "escopo": "Global", "confiabilidade": 4, "prioridade": 3, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["sustentabilidade"], "objetivos_tabela": ["geopolitica_suprimentos"], "objetivos_inferidos": ["sustentabilidade_ambiental"], "origem": ["internacional"], "melhor_uso": "ESG, transição energética, cadeias de suprimento e minerais críticos.", "grupo": "imprensa"}, {"slug": "wsj-commodities", "nome": "The Wall Street Journal — Commodities", "site_url": "https://www.wsj.com/news/markets/commodities", "feed_url": "", "metodo_coleta": "referencia", "idioma": "en", "tipo": "jornal_economico", "escopo": "Global", "confiabilidade": 4, "prioridade": 3, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado"], "objetivos_tabela": [], "objetivos_inferidos": ["geopolitica_suprimentos", "precos_commodities"], "origem": ["internacional"], "melhor_uso": "Mercados, empresas, política comercial e commodities.", "grupo": "imprensa"}, {"slug": "unep", "nome": "UNEP — United Nations Environment Programme", "site_url": "https://www.unep.org", "feed_url": "", "metodo_coleta": "manual", "idioma": "en", "tipo": "organizacao_internacional", "escopo": "Global", "confiabilidade": 4, "prioridade": 3, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["sustentabilidade"], "objetivos_tabela": [], "objetivos_inferidos": ["sustentabilidade_ambiental"], "origem": ["internacional"], "melhor_uso": "Impactos ambientais, mineração responsável, resíduos e transição energética.", "grupo": "internacional"}, {"slug": "world-bank-extractives", "nome": "World Bank — Extractives", "site_url": "https://www.worldbank.org/en/topic/extractiveindustries", "feed_url": "", "metodo_coleta": "manual", "idioma": "en", "tipo": "organizacao_internacional", "escopo": "Global", "confiabilidade": 4, "prioridade": 3, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["politica", "mercado"], "objetivos_tabela": ["geopolitica_suprimentos"], "objetivos_inferidos": ["precos_commodities"], "origem": ["internacional"], "melhor_uso": "Governança mineral, desenvolvimento, financiamento e políticas de recursos naturais.", "grupo": "internacional"}, {"slug": "argus-media", "nome": "Argus Media — Metals", "site_url": "https://www.argusmedia.com/en/metals", "feed_url": "", "metodo_coleta": "referencia", "idioma": "en", "tipo": "consultoria_dados", "escopo": "Global", "confiabilidade": 3, "prioridade": 3, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado"], "objetivos_tabela": ["precos_commodities"], "objetivos_inferidos": [], "origem": ["internacional"], "melhor_uso": "Preços, mercados e análises de metais e matérias-primas.", "grupo": "dados"}, {"slug": "benchmark-mineral-intelligence", "nome": "Benchmark Mineral Intelligence", "site_url": "https://source.benchmarkminerals.com", "feed_url": "", "metodo_coleta": "referencia", "idioma": "en", "tipo": "consultoria_dados", "escopo": "Global", "confiabilidade": 3, "prioridade": 3, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado"], "objetivos_tabela": ["minerais_criticos"], "objetivos_inferidos": [], "origem": ["internacional"], "melhor_uso": "Lítio, níquel, cobalto, grafite, terras raras, baterias e veículos elétricos.", "grupo": "dados"}, {"slug": "brasil-mineral", "nome": "Brasil Mineral", "site_url": "https://brasilmineral.com.br", "feed_url": "https://brasilmineral.com.br/rss.xml", "metodo_coleta": "rss", "idioma": "pt", "tipo": "veiculo_especializado", "escopo": "Brasil", "confiabilidade": 3, "prioridade": 3, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado", "politica", "exploracao"], "objetivos_tabela": ["noticias_setor"], "objetivos_inferidos": [], "origem": ["brasil"], "melhor_uso": "Notícias setoriais, empresas, investimentos, regulação, CFEM e minerais críticos.", "grupo": "midia"}, {"slug": "cru-group", "nome": "CRU Group", "site_url": "https://www.crugroup.com", "feed_url": "", "metodo_coleta": "referencia", "idioma": "en", "tipo": "consultoria_dados", "escopo": "Global", "confiabilidade": 3, "prioridade": 3, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado"], "objetivos_tabela": ["precos_commodities"], "objetivos_inferidos": [], "origem": ["internacional"], "melhor_uso": "Preços, custos, mercados e análises de alumínio, cobre, níquel, ferro e outros metais.", "grupo": "dados"}, {"slug": "fastmarkets", "nome": "Fastmarkets", "site_url": "https://www.fastmarkets.com", "feed_url": "", "metodo_coleta": "referencia", "idioma": "en", "tipo": "consultoria_dados", "escopo": "Global", "confiabilidade": 3, "prioridade": 3, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado"], "objetivos_tabela": ["precos_commodities"], "objetivos_inferidos": [], "origem": ["internacional"], "melhor_uso": "Preços, índices e análises de metais, minerais e commodities.", "grupo": "dados"}, {"slug": "gov-br", "nome": "Gov.br", "site_url": "https://gov.br", "feed_url": "https://www.gov.br/rss.xml", "metodo_coleta": "rss", "idioma": "pt", "tipo": "orgao_oficial", "escopo": "Brasil", "confiabilidade": 3, "prioridade": 3, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["politica"], "objetivos_tabela": ["dados_oficiais_regulacao"], "objetivos_inferidos": [], "origem": ["brasil"], "melhor_uso": "Acesso a ANM, SGB, MME, Ibama, BNDES, Finep e outras políticas federais.", "grupo": "governo"}, {"slug": "ibram", "nome": "IBRAM", "site_url": "https://ibram.org.br", "feed_url": "https://ibram.org.br/feed/", "metodo_coleta": "rss", "idioma": "pt", "tipo": "associacao_evento", "escopo": "Brasil", "confiabilidade": 3, "prioridade": 3, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["politica", "sustentabilidade"], "objetivos_tabela": [], "objetivos_inferidos": ["dados_oficiais_regulacao", "minerais_criticos", "sustentabilidade_ambiental"], "origem": ["brasil"], "melhor_uso": "Políticas públicas, minerais críticos, sustentabilidade e posição da indústria; considerar viés pró-setor.", "grupo": "associacoes"}, {"slug": "infomoney", "nome": "InfoMoney", "site_url": "https://infomoney.com.br", "feed_url": "https://www.infomoney.com.br/feed/", "metodo_coleta": "rss", "idioma": "pt", "tipo": "jornal_economico", "escopo": "Brasil", "confiabilidade": 3, "prioridade": 3, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado"], "objetivos_tabela": ["precos_commodities"], "objetivos_inferidos": [], "origem": ["brasil"], "melhor_uso": "Ações de mineradoras, commodities, resultados e mercado de capitais.", "grupo": "imprensa"}, {"slug": "international-mining", "nome": "International Mining", "site_url": "https://im-mining.com", "feed_url": "https://im-mining.com/feed/", "metodo_coleta": "rss", "idioma": "en", "tipo": "veiculo_especializado", "escopo": "Global", "confiabilidade": 3, "prioridade": 3, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["tecnologia"], "objetivos_tabela": ["tecnologia_pesquisa"], "objetivos_inferidos": [], "origem": ["brasil", "internacional"], "melhor_uso": "Equipamentos, operações, engenharia e tecnologia mineral. / Engenharia de minas, britagem, moagem, transporte, equipamentos e operações.", "grupo": "midia"}, {"slug": "mining-technology", "nome": "Mining Technology", "site_url": "https://www.mining-technology.com", "feed_url": "https://www.mining-technology.com/feed/", "metodo_coleta": "rss", "idioma": "en", "tipo": "veiculo_especializado", "escopo": "Global", "confiabilidade": 3, "prioridade": 3, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["tecnologia"], "objetivos_tabela": ["tecnologia_pesquisa"], "objetivos_inferidos": [], "origem": ["brasil", "internacional"], "melhor_uso": "Automação, tecnologia, processamento e inovação em mineração. / Automação, digitalização, equipamentos, processamento e inovação em minas.", "grupo": "midia"}, {"slug": "secti-bahia", "nome": "SECTI Bahia", "site_url": "https://www.secti.ba.gov.br", "feed_url": "https://www.ba.gov.br/secti/feed", "metodo_coleta": "rss", "idioma": "pt", "tipo": "orgao_oficial", "escopo": "Bahia", "confiabilidade": 3, "prioridade": 3, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["tecnologia", "politica"], "objetivos_tabela": ["bahia"], "objetivos_inferidos": ["tecnologia_pesquisa"], "origem": ["brasil"], "melhor_uso": "Inovação, ciência, tecnologia e iniciativas ligadas à mineração.", "grupo": "governo"}, {"slug": "the-mining-brasil", "nome": "The Mining Brasil", "site_url": "https://themining.com.br", "feed_url": "https://themining.com.br/feed/", "metodo_coleta": "rss", "idioma": "pt", "tipo": "veiculo_especializado", "escopo": "Brasil/Global", "confiabilidade": 3, "prioridade": 3, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado", "exploracao"], "objetivos_tabela": ["noticias_setor"], "objetivos_inferidos": ["minerais_criticos"], "origem": ["brasil"], "melhor_uso": "Mineração, commodities, empresas, projetos, tecnologia, regulação e sustentabilidade.", "grupo": "midia"}, {"slug": "the-northern-miner", "nome": "The Northern Miner", "site_url": "https://www.northernminer.com", "feed_url": "https://www.northernminer.com/feed/", "metodo_coleta": "rss", "idioma": "en", "tipo": "veiculo_especializado", "escopo": "Global, com foco em América do Norte", "confiabilidade": 3, "prioridade": 3, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["exploracao", "mercado"], "objetivos_tabela": ["noticias_setor"], "objetivos_inferidos": [], "origem": ["brasil", "internacional"], "melhor_uso": "Exploração mineral, jazidas, projetos e empresas juniors. / Exploração mineral, jazidas, empresas juniors, projetos e avaliações de ativos.", "grupo": "midia"}, {"slug": "valor-economico", "nome": "Valor Econômico", "site_url": "https://valor.globo.com", "feed_url": "https://valor.globo.com/rss/valor", "metodo_coleta": "rss", "idioma": "pt", "tipo": "jornal_economico", "escopo": "Brasil/Global", "confiabilidade": 3, "prioridade": 3, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado"], "objetivos_tabela": ["precos_commodities"], "objetivos_inferidos": [], "origem": ["brasil"], "melhor_uso": "Empresas, resultados, investimentos, commodities e políticas econômicas.", "grupo": "imprensa"}, {"slug": "wood-mackenzie-metals-mining", "nome": "Wood Mackenzie — Metals & Mining", "site_url": "https://www.woodmac.com/our-expertise/metals-and-mining", "feed_url": "", "metodo_coleta": "referencia", "idioma": "en", "tipo": "consultoria_dados", "escopo": "Global", "confiabilidade": 3, "prioridade": 3, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado", "tecnologia"], "objetivos_tabela": ["tecnologia_pesquisa"], "objetivos_inferidos": ["precos_commodities"], "origem": ["internacional"], "melhor_uso": "Análises de projetos, custos, oferta, demanda e investimentos em mineração.", "grupo": "dados"}, {"slug": "banco-mundial", "nome": "Banco Mundial", "site_url": "https://www.worldbank.org", "feed_url": "", "metodo_coleta": "manual", "idioma": "en", "tipo": "organizacao_internacional", "escopo": "Global", "confiabilidade": 4, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["politica", "sustentabilidade"], "objetivos_tabela": ["minerais_criticos"], "objetivos_inferidos": ["geopolitica_suprimentos"], "origem": ["brasil"], "melhor_uso": "Governança mineral, desenvolvimento e financiamento de recursos naturais.", "grupo": "internacional"}, {"slug": "geological-survey-of-canada", "nome": "Geological Survey of Canada", "site_url": "https://natural-resources.canada.ca/earth-sciences/geology/geological-survey-canada", "feed_url": "https://natural-resources.canada.ca/rss.xml", "metodo_coleta": "rss", "idioma": "en", "tipo": "instituicao_cientifica", "escopo": "Canadá/Global", "confiabilidade": 4, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["exploracao"], "objetivos_tabela": ["dados_geologicos"], "objetivos_inferidos": [], "origem": ["internacional"], "melhor_uso": "Geologia, exploração, recursos minerais e dados geocientíficos.", "grupo": "ciencia"}, {"slug": "geoscience-australia", "nome": "Geoscience Australia", "site_url": "https://www.ga.gov.au", "feed_url": "", "metodo_coleta": "manual", "idioma": "en", "tipo": "instituicao_cientifica", "escopo": "Austrália/Global", "confiabilidade": 4, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["exploracao"], "objetivos_tabela": ["dados_geologicos"], "objetivos_inferidos": [], "origem": ["internacional"], "melhor_uso": "Geologia, recursos minerais, dados geofísicos e exploração.", "grupo": "ciencia"}, {"slug": "iucn", "nome": "IUCN", "site_url": "https://iucn.org", "feed_url": "https://iucn.org/rss.xml", "metodo_coleta": "rss", "idioma": "en", "tipo": "organizacao_internacional", "escopo": "Global", "confiabilidade": 4, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["sustentabilidade"], "objetivos_tabela": [], "objetivos_inferidos": ["sustentabilidade_ambiental"], "origem": ["internacional"], "melhor_uso": "Biodiversidade, áreas protegidas e impactos da mineração, incluindo mineração em alto-mar.", "grupo": "internacional"}, {"slug": "nikkei-asia", "nome": "Nikkei Asia", "site_url": "https://asia.nikkei.com", "feed_url": "", "metodo_coleta": "manual", "idioma": "en", "tipo": "jornal_economico", "escopo": "Ásia/Global", "confiabilidade": 4, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado", "politica"], "objetivos_tabela": [], "objetivos_inferidos": ["geopolitica_suprimentos", "minerais_criticos"], "origem": ["internacional"], "melhor_uso": "Demanda asiática, China, terras raras, baterias e cadeias de minerais.", "grupo": "imprensa"}, {"slug": "ocde", "nome": "OCDE", "site_url": "https://www.oecd.org", "feed_url": "", "metodo_coleta": "manual", "idioma": "en", "tipo": "organizacao_internacional", "escopo": "Global", "confiabilidade": 4, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["politica"], "objetivos_tabela": ["minerais_criticos"], "objetivos_inferidos": ["geopolitica_suprimentos"], "origem": ["brasil"], "melhor_uso": "Cadeias de suprimento, due diligence e governança de minerais.", "grupo": "internacional"}, {"slug": "a-tarde", "nome": "A Tarde", "site_url": "https://atarde.com.br", "feed_url": "https://atarde.com.br/rss", "metodo_coleta": "rss", "idioma": "pt", "tipo": "jornal_regional", "escopo": "Bahia", "confiabilidade": 3, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["politica", "mercado"], "objetivos_tabela": ["bahia"], "objetivos_inferidos": [], "origem": ["brasil"], "melhor_uso": "Impactos locais, política estadual e acontecimentos regionais.", "grupo": "imprensa"}, {"slug": "antaike", "nome": "Antaike", "site_url": "https://www.antaike.com", "feed_url": "", "metodo_coleta": "referencia", "idioma": "zh", "tipo": "consultoria_dados", "escopo": "China/Global", "confiabilidade": 3, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado"], "objetivos_tabela": [], "objetivos_inferidos": ["minerais_criticos", "precos_commodities"], "origem": ["internacional"], "melhor_uso": "Metais industriais, especialmente cobre, alumínio, zinco, chumbo e níquel.", "grupo": "dados"}, {"slug": "bndes", "nome": "BNDES", "site_url": "https://bndes.gov.br", "feed_url": "", "metodo_coleta": "manual", "idioma": "pt", "tipo": "fomento", "escopo": "Brasil", "confiabilidade": 3, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado", "politica"], "objetivos_tabela": [], "objetivos_inferidos": ["minerais_criticos", "precos_commodities"], "origem": ["brasil"], "melhor_uso": "Financiamento, projetos estruturantes e investimentos em mineração.", "grupo": "governo"}, {"slug": "cbpm", "nome": "CBPM", "site_url": "https://cbpm.ba.gov.br", "feed_url": "", "metodo_coleta": "manual", "idioma": "pt", "tipo": "orgao_oficial", "escopo": "Bahia", "confiabilidade": 3, "prioridade": 2, "prioridade_regiao_uf": "BA", "prioridade_regiao": 4, "categorias": ["exploracao", "politica"], "objetivos_tabela": ["bahia", "dados_oficiais_regulacao"], "objetivos_inferidos": ["dados_geologicos"], "origem": ["brasil"], "melhor_uso": "Pesquisa mineral, geologia, projetos, minerais estratégicos e dados baianos.", "grupo": "governo"}, {"slug": "cetem", "nome": "CETEM", "site_url": "https://www.gov.br/cetem", "feed_url": "https://www.gov.br/cetem/rss.xml", "metodo_coleta": "rss", "idioma": "pt", "tipo": "instituicao_cientifica", "escopo": "Brasil", "confiabilidade": 3, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["tecnologia", "sustentabilidade"], "objetivos_tabela": ["tecnologia_pesquisa"], "objetivos_inferidos": [], "origem": ["brasil"], "melhor_uso": "Beneficiamento mineral, tecnologia e pesquisa aplicada.", "grupo": "ciencia"}, {"slug": "correio-24-horas", "nome": "Correio 24 Horas", "site_url": "https://correio24horas.com.br", "feed_url": "https://www.correio24horas.com.br/rss", "metodo_coleta": "rss", "idioma": "pt", "tipo": "jornal_regional", "escopo": "Bahia", "confiabilidade": 3, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["politica", "mercado"], "objetivos_tabela": ["bahia"], "objetivos_inferidos": [], "origem": ["brasil"], "melhor_uso": "Notícias gerais e regionais; não é fonte técnica especializada.", "grupo": "imprensa"}, {"slug": "cfr", "nome": "Council on Foreign Relations — Critical Minerals", "site_url": "https://www.cfr.org", "feed_url": "https://www.cfr.org/feed", "metodo_coleta": "rss", "idioma": "en", "tipo": "think_tank", "escopo": "Global", "confiabilidade": 3, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["politica"], "objetivos_tabela": ["geopolitica_suprimentos"], "objetivos_inferidos": [], "origem": ["internacional"], "melhor_uso": "Geopolítica dos minerais críticos, segurança de suprimentos e políticas internacionais.", "grupo": "think_tank"}, {"slug": "csis", "nome": "CSIS — Critical Minerals Strategy", "site_url": "https://www.csis.org", "feed_url": "https://www.csis.org/rss.xml", "metodo_coleta": "rss", "idioma": "en", "tipo": "think_tank", "escopo": "Global", "confiabilidade": 3, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["politica"], "objetivos_tabela": ["geopolitica_suprimentos"], "objetivos_inferidos": [], "origem": ["internacional"], "melhor_uso": "Estratégias geopolíticas, segurança energética e cadeias críticas de minerais.", "grupo": "think_tank"}, {"slug": "epbr", "nome": "EPBR", "site_url": "https://epbr.com.br", "feed_url": "", "metodo_coleta": "manual", "idioma": "pt", "tipo": "veiculo_especializado", "escopo": "Brasil", "confiabilidade": 3, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado", "politica"], "objetivos_tabela": [], "objetivos_inferidos": ["minerais_criticos", "noticias_setor"], "origem": ["brasil"], "melhor_uso": "Energia, petróleo, gás e interseções com mineração e transição energética.", "grupo": "midia"}, {"slug": "estadao", "nome": "Estadão", "site_url": "https://estadao.com.br", "feed_url": "https://www.estadao.com.br/arc/outboundfeeds/feeds/rss/sections/geral/?body=%7B%22layout%22:%22google-news%22%7D", "metodo_coleta": "rss", "idioma": "pt", "tipo": "jornal_generalista", "escopo": "Brasil", "confiabilidade": 3, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado", "politica"], "objetivos_tabela": [], "objetivos_inferidos": ["noticias_setor"], "origem": ["brasil"], "melhor_uso": "Política, economia e grandes reportagens.", "grupo": "imprensa"}, {"slug": "exame", "nome": "Exame", "site_url": "https://exame.com", "feed_url": "https://exame.com/feed/", "metodo_coleta": "rss", "idioma": "pt", "tipo": "jornal_economico", "escopo": "Brasil/Global", "confiabilidade": 3, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado"], "objetivos_tabela": [], "objetivos_inferidos": ["precos_commodities"], "origem": ["brasil"], "melhor_uso": "Negócios, empresas e tendências econômicas.", "grupo": "imprensa"}, {"slug": "finep", "nome": "Finep", "site_url": "https://finep.gov.br", "feed_url": "", "metodo_coleta": "manual", "idioma": "pt", "tipo": "fomento", "escopo": "Brasil", "confiabilidade": 3, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["tecnologia"], "objetivos_tabela": ["tecnologia_pesquisa"], "objetivos_inferidos": [], "origem": ["brasil"], "melhor_uso": "P&D, inovação, mineração sustentável e tecnologias aplicadas.", "grupo": "governo"}, {"slug": "folha-de-s-paulo", "nome": "Folha de S.Paulo", "site_url": "https://folha.uol.com.br", "feed_url": "", "metodo_coleta": "manual", "idioma": "pt", "tipo": "jornal_generalista", "escopo": "Brasil", "confiabilidade": 3, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado", "politica"], "objetivos_tabela": [], "objetivos_inferidos": ["noticias_setor"], "origem": ["brasil"], "melhor_uso": "Apuração jornalística, política e temas socioambientais.", "grupo": "imprensa"}, {"slug": "g1", "nome": "G1", "site_url": "https://g1.globo.com", "feed_url": "https://g1.globo.com/rss/g1/economia/", "metodo_coleta": "rss", "idioma": "pt", "tipo": "jornal_generalista", "escopo": "Brasil", "confiabilidade": 3, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado", "politica"], "objetivos_tabela": [], "objetivos_inferidos": ["noticias_setor"], "origem": ["brasil"], "melhor_uso": "Grande repercussão, política e acontecimentos relevantes.", "grupo": "imprensa"}, {"slug": "governo-da-bahia", "nome": "Governo da Bahia", "site_url": "https://ba.gov.br", "feed_url": "", "metodo_coleta": "manual", "idioma": "pt", "tipo": "orgao_oficial", "escopo": "Bahia", "confiabilidade": 3, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["politica"], "objetivos_tabela": [], "objetivos_inferidos": ["bahia", "dados_oficiais_regulacao"], "origem": ["brasil"], "melhor_uso": "Políticas estaduais, investimentos, infraestrutura e desenvolvimento econômico.", "grupo": "governo"}, {"slug": "inema", "nome": "INEMA", "site_url": "https://www.inema.ba.gov.br", "feed_url": "https://www.ba.gov.br/inema/feed", "metodo_coleta": "rss", "idioma": "pt", "tipo": "orgao_oficial", "escopo": "Bahia", "confiabilidade": 3, "prioridade": 2, "prioridade_regiao_uf": "BA", "prioridade_regiao": 3, "categorias": ["sustentabilidade", "politica"], "objetivos_tabela": ["bahia"], "objetivos_inferidos": ["dados_oficiais_regulacao", "sustentabilidade_ambiental"], "origem": ["brasil"], "melhor_uso": "Licenciamento ambiental, fiscalização e questões socioambientais na Bahia.", "grupo": "governo"}, {"slug": "mining-indaba", "nome": "Mining Indaba", "site_url": "https://miningindaba.com", "feed_url": "", "metodo_coleta": "manual", "idioma": "en", "tipo": "associacao_evento", "escopo": "África/Global", "confiabilidade": 3, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado", "politica"], "objetivos_tabela": [], "objetivos_inferidos": ["geopolitica_suprimentos", "noticias_setor"], "origem": ["internacional"], "melhor_uso": "Investimentos, projetos africanos, governança e networking do setor.", "grupo": "associacoes"}, {"slug": "mining-weekly", "nome": "Mining Weekly", "site_url": "https://www.miningweekly.com", "feed_url": "", "metodo_coleta": "manual", "idioma": "en", "tipo": "veiculo_especializado", "escopo": "Global, forte na África", "confiabilidade": 3, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado", "exploracao"], "objetivos_tabela": ["noticias_setor"], "objetivos_inferidos": [], "origem": ["brasil", "internacional"], "melhor_uso": "Cadeias globais, projetos e mercado de minerais. / Projetos, empresas, cadeias de suprimento e mercado mineral internacional.", "grupo": "midia"}, {"slug": "pdac", "nome": "PDAC", "site_url": "https://www.pdac.ca", "feed_url": "", "metodo_coleta": "manual", "idioma": "en", "tipo": "associacao_evento", "escopo": "Canadá/Global", "confiabilidade": 3, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["exploracao"], "objetivos_tabela": [], "objetivos_inferidos": ["noticias_setor"], "origem": ["internacional"], "melhor_uso": "Exploração mineral, financiamento de projetos e tendências da indústria.", "grupo": "associacoes"}, {"slug": "project-blue", "nome": "Project Blue", "site_url": "https://projectblue.com", "feed_url": "", "metodo_coleta": "referencia", "idioma": "en", "tipo": "consultoria_dados", "escopo": "Global", "confiabilidade": 3, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado"], "objetivos_tabela": ["minerais_criticos"], "objetivos_inferidos": [], "origem": ["internacional"], "melhor_uso": "Minerais críticos, terras raras, baterias e cadeias de transição energética.", "grupo": "dados"}, {"slug": "roskill-wood-mackenzie", "nome": "Roskill / Wood Mackenzie", "site_url": "https://www.woodmac.com", "feed_url": "", "metodo_coleta": "referencia", "idioma": "en", "tipo": "consultoria_dados", "escopo": "Global", "confiabilidade": 3, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado"], "objetivos_tabela": [], "objetivos_inferidos": ["minerais_criticos", "precos_commodities"], "origem": ["internacional"], "melhor_uso": "Minerais críticos, baterias, terras raras e análises de cadeia de valor.", "grupo": "dados"}, {"slug": "scmp-business", "nome": "South China Morning Post — Business", "site_url": "https://www.scmp.com/business", "feed_url": "https://www.scmp.com/rss/92/feed/", "metodo_coleta": "rss", "idioma": "en", "tipo": "jornal_economico", "escopo": "China/Ásia", "confiabilidade": 3, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado", "politica"], "objetivos_tabela": [], "objetivos_inferidos": ["geopolitica_suprimentos", "minerais_criticos"], "origem": ["internacional"], "melhor_uso": "Política mineral chinesa, terras raras, grafeno, lítio e cadeias industriais.", "grupo": "imprensa"}, {"slug": "bahia-economica", "nome": "Bahia Econômica", "site_url": "https://bahiaeconomica.com.br", "feed_url": "https://bahiaeconomica.com.br/rss", "metodo_coleta": "rss", "idioma": "pt", "tipo": "jornal_regional", "escopo": "Bahia", "confiabilidade": 2, "prioridade": 2, "prioridade_regiao_uf": "BA", "prioridade_regiao": 3, "categorias": ["mercado", "politica"], "objetivos_tabela": ["bahia"], "objetivos_inferidos": [], "origem": ["brasil"], "melhor_uso": "Projetos, investimentos e mineração na Bahia; exemplo: cobertura de mina de níquel em Itagibá.", "grupo": "imprensa"}, {"slug": "bahia-noticias", "nome": "Bahia Notícias", "site_url": "https://bahianoticias.com.br", "feed_url": "https://cdn.bahianoticias.com.br/rss.xml", "metodo_coleta": "rss", "idioma": "pt", "tipo": "jornal_regional", "escopo": "Bahia", "confiabilidade": 2, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["politica"], "objetivos_tabela": [], "objetivos_inferidos": ["bahia"], "origem": ["brasil"], "melhor_uso": "Política, economia e acontecimentos regionais.", "grupo": "imprensa"}, {"slug": "in-the-mine", "nome": "In The Mine", "site_url": "https://inthemine.com.br", "feed_url": "https://www.inthemine.com.br/site/feed/", "metodo_coleta": "rss", "idioma": "pt", "tipo": "veiculo_especializado", "escopo": "Brasil", "confiabilidade": 2, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado", "tecnologia"], "objetivos_tabela": [], "objetivos_inferidos": ["noticias_setor", "tecnologia_pesquisa"], "origem": ["brasil"], "melhor_uso": "Notícias de mineração; avaliar autoria e fontes caso a caso.", "grupo": "midia"}, {"slug": "movimento-economico", "nome": "Movimento Econômico", "site_url": "https://movimentoeconomico.com.br", "feed_url": "https://movimentoeconomico.com.br/feed/", "metodo_coleta": "rss", "idioma": "pt", "tipo": "jornal_regional", "escopo": "Bahia/Brasil", "confiabilidade": 2, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado"], "objetivos_tabela": [], "objetivos_inferidos": ["bahia", "precos_commodities"], "origem": ["brasil"], "melhor_uso": "Negócios, investimentos e contexto econômico regional.", "grupo": "imprensa"}, {"slug": "noticias-de-mineracao", "nome": "Notícias de Mineração", "site_url": "https://noticiasdemineracao.com", "feed_url": "", "metodo_coleta": "manual", "idioma": "pt", "tipo": "veiculo_especializado", "escopo": "Brasil", "confiabilidade": 2, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado", "exploracao"], "objetivos_tabela": ["noticias_setor"], "objetivos_inferidos": [], "origem": ["brasil"], "melhor_uso": "Acompanhamento rápido de notícias; confirmar dados em fontes oficiais.", "grupo": "midia"}, {"slug": "revista-minerios", "nome": "Revista Minérios", "site_url": "https://revistaminerios.com.br", "feed_url": "https://revistaminerios.com.br/feed/", "metodo_coleta": "rss", "idioma": "pt", "tipo": "veiculo_especializado", "escopo": "Brasil", "confiabilidade": 2, "prioridade": 2, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["tecnologia", "mercado"], "objetivos_tabela": [], "objetivos_inferidos": ["noticias_setor", "tecnologia_pesquisa"], "origem": ["brasil"], "melhor_uso": "Notícias e conteúdos técnicos complementares; validar dados primários.", "grupo": "midia"}, {"slug": "cnn-brasil", "nome": "CNN Brasil", "site_url": "https://cnnbrasil.com.br", "feed_url": "https://admin.cnnbrasil.com.br/feed/", "metodo_coleta": "rss", "idioma": "pt", "tipo": "jornal_generalista", "escopo": "Brasil", "confiabilidade": 3, "prioridade": 1, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado", "politica"], "objetivos_tabela": [], "objetivos_inferidos": ["noticias_setor"], "origem": ["brasil"], "melhor_uso": "Notícias gerais e política; complementar com fontes setoriais.", "grupo": "imprensa"}, {"slug": "alo-alo-bahia", "nome": "ALO ALÔ Bahia", "site_url": "https://aloalobahia.com", "feed_url": "https://aloalobahia.com/feed/", "metodo_coleta": "rss", "idioma": "pt", "tipo": "jornal_regional", "escopo": "Bahia", "confiabilidade": 2, "prioridade": 1, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["mercado"], "objetivos_tabela": [], "objetivos_inferidos": ["bahia"], "origem": ["brasil"], "melhor_uso": "Notícias locais; conferir informações em fontes oficiais.", "grupo": "imprensa"}, {"slug": "poder360", "nome": "Poder360", "site_url": "https://poder360.com.br", "feed_url": "https://www.poder360.com.br/feed/", "metodo_coleta": "rss", "idioma": "pt", "tipo": "jornal_generalista", "escopo": "Brasil", "confiabilidade": 2, "prioridade": 1, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["politica"], "objetivos_tabela": [], "objetivos_inferidos": ["dados_oficiais_regulacao"], "origem": ["brasil"], "melhor_uso": "Política pública, governo e regulação; não é fonte técnica de mineração.", "grupo": "imprensa"}, {"slug": "trbn", "nome": "TRBN", "site_url": "https://trbn.com.br", "feed_url": "", "metodo_coleta": "manual", "idioma": "pt", "tipo": "jornal_regional", "escopo": "Bahia", "confiabilidade": 2, "prioridade": 1, "prioridade_regiao_uf": "", "prioridade_regiao": null, "categorias": ["politica"], "objetivos_tabela": [], "objetivos_inferidos": ["bahia"], "origem": ["brasil"], "melhor_uso": "Notícias locais e regionais; usar como complemento.", "grupo": "imprensa"}], "objectives": [{"slug": "noticias_setor", "label": "Notícias do setor mineral", "long": "Acompanhamento diário do setor mineral: empresas, projetos, aquisições, produção e lançamentos. É a base do fluxo de notícias do Radar.", "nomes_originais": ["Notícias diárias do setor", "Notícias globais de mineração"]}, {"slug": "precos_commodities", "label": "Preços, commodities e investimentos", "long": "Preços de metais e minerais, análises de oferta e demanda, resultados de mineradoras, mercado de capitais, financiamento e investimentos.", "nomes_originais": ["Investimentos e commodities", "Preços e análises de commodities"]}, {"slug": "minerais_criticos", "label": "Minerais críticos e transição energética", "long": "Lítio, terras raras, níquel, cobre, grafita e demais minerais estratégicos para baterias, energia limpa e a transição energética.", "nomes_originais": ["Minerais críticos e transição energética", "Minerais críticos e baterias"]}, {"slug": "geopolitica_suprimentos", "label": "Geopolítica e cadeias de suprimento", "long": "Disputas e acordos internacionais, comércio exterior, restrições de exportação e segurança das cadeias de suprimento de minerais.", "nomes_originais": ["Geopolítica e cadeias de suprimento"]}, {"slug": "dados_oficiais_regulacao", "label": "Dados oficiais e regulação", "long": "Normas, outorgas, licenças, CFEM, editais e dados publicados por órgãos públicos. Fonte primária para confirmar fatos.", "nomes_originais": ["Dados oficiais e regulação"]}, {"slug": "dados_geologicos", "label": "Dados geológicos e estatísticos", "long": "Serviços geológicos e estatísticas minerais: levantamentos, mapas, ocorrências, reservas e produção oficial.", "nomes_originais": ["Dados geológicos e estatísticos"]}, {"slug": "tecnologia_pesquisa", "label": "Tecnologia, operações e pesquisa", "long": "Inovação em lavra e processamento, automação, equipamentos, geotecnologias e pesquisa científica aplicada à mineração.", "nomes_originais": ["Tecnologia e pesquisa", "Tecnologia e operações"]}, {"slug": "sustentabilidade_ambiental", "label": "Sustentabilidade e meio ambiente", "long": "Licenciamento ambiental, ESG, biodiversidade, água, rejeitos e impactos socioambientais da mineração.", "nomes_originais": []}, {"slug": "bahia", "label": "Bahia", "long": "Fontes e notícias com foco no estado da Bahia, território prioritário do Prospecta 4.0.", "nomes_originais": ["Bahia"]}], "categories": [{"slug": "mercado", "label": "Mercado", "description": "Preços, oferta e demanda, resultados de empresas, fusões, aquisições e investimentos no setor mineral."}, {"slug": "tecnologia", "label": "Tecnologia", "description": "Inovação em pesquisa, lavra e beneficiamento, automação, sensoriamento remoto e inteligência artificial aplicada."}, {"slug": "sustentabilidade", "label": "Sustentabilidade", "description": "Licenciamento, ESG, impactos socioambientais, recuperação de áreas, água e biodiversidade."}, {"slug": "politica", "label": "Política mineral", "description": "Regulação, políticas públicas, tributação, acordos internacionais e decisões de governo que afetam a mineração."}, {"slug": "exploracao", "label": "Exploração", "description": "Pesquisa mineral, descobertas, jazidas, levantamentos geológicos e projetos em fase de prospecção."}], "types": {"veiculo_especializado": "Veículo especializado", "jornal_generalista": "Jornal generalista", "jornal_economico": "Jornal econômico", "jornal_regional": "Jornal regional", "agencia_noticias": "Agência de notícias", "orgao_oficial": "Órgão oficial", "instituicao_cientifica": "Instituição científica", "fomento": "Fomento", "organizacao_internacional": "Organização internacional", "think_tank": "Think tank", "consultoria_dados": "Consultoria e dados", "associacao_evento": "Associação ou evento"}, "groups": [{"slug": "midia", "label": "Mídia especializada", "icon": "pickaxe", "color": "#5b8def", "tipos": ["veiculo_especializado"]}, {"slug": "imprensa", "label": "Imprensa e jornais", "icon": "newspaper", "color": "#e0703a", "tipos": ["jornal_generalista", "jornal_economico", "jornal_regional", "agencia_noticias"]}, {"slug": "governo", "label": "Governo e regulação", "icon": "landmark", "color": "#3fb984", "tipos": ["orgao_oficial", "fomento"]}, {"slug": "ciencia", "label": "Ciência e geologia", "icon": "microscope", "color": "#d9a520", "tipos": ["instituicao_cientifica"]}, {"slug": "internacional", "label": "Organizações internacionais", "icon": "globe", "color": "#e0567f", "tipos": ["organizacao_internacional"]}, {"slug": "dados", "label": "Dados e consultorias", "icon": "chart", "color": "#4caf50", "tipos": ["consultoria_dados"]}, {"slug": "think_tank", "label": "Think tanks", "icon": "lightbulb", "color": "#8b8bf5", "tipos": ["think_tank"]}, {"slug": "associacoes", "label": "Associações e eventos", "icon": "users", "color": "#e06666", "tipos": ["associacao_evento"]}], "methods": {"rss": {"label": "RSS", "help": "Feed verificado; pode entrar na coleta automática"}, "manual": {"label": "Manual", "help": "Sem feed acessível; acompanhamento manual"}, "referencia": {"label": "Referência", "help": "Acesso pago ou restrito; usada para checar fatos"}}}</script>
+<script>
+(() => {
+	const { sources, objectives, categories, types, groups, methods } = JSON.parse(document.getElementById('catalog-data').textContent);
+	const objLabel = Object.fromEntries(objectives.map(o => [o.slug, o.label]));
+	const groupOf = Object.fromEntries(groups.map(g => [g.slug, g]));
+	const state = { q: '', grupo: null, objetivo: null, categoria: null, coleta: null };
+	// Lucide icons (ISC license), inlined so the page has no runtime dependency.
+	const ICONS = {
+		pickaxe: '<path d="M14.531 12.469 6.619 20.38a1 1 0 1 1-3-3l7.912-7.912"/><path d="M15.686 4.314A12.5 12.5 0 0 0 5.461 2.958 1 1 0 0 0 5.58 4.71a22 22 0 0 1 6.318 3.393"/><path d="M17.7 3.7a1 1 0 0 0-1.4 0l-4.6 4.6a1 1 0 0 0 0 1.4l2.6 2.6a1 1 0 0 0 1.4 0l4.6-4.6a1 1 0 0 0 0-1.4z"/><path d="M19.686 8.314a12.501 12.501 0 0 1 1.356 10.225 1 1 0 0 1-1.751-.119 22 22 0 0 0-3.393-6.319"/>',
+		newspaper: '<path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/>',
+		landmark: '<line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/>',
+		microscope: '<path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14h2"/><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z"/><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/>',
+		globe: '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>',
+		chart: '<path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/>',
+		lightbulb: '<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/>',
+		users: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.74"/>',
+	};
+	const icon = (g, cls = '') => `<span class="ico ${cls}" style="--c:${g.color}" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICONS[g.icon]}</svg></span>`;
+	const $ = id => document.getElementById(id);
+	const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+	const dots = n => '●'.repeat(n) + '<i>' + '●'.repeat(4 - n) + '</i>';
+	const levels = ['', 'Baixa', 'Média', 'Alta', 'Muito alta'];
+
+	$('stats').innerHTML = [
+		[sources.length, 'fontes catalogadas'],
+		[sources.filter(s => s.metodo_coleta === 'rss').length, 'com feed RSS verificado'],
+		[objectives.length, 'objetivos'],
+		[categories.length, 'categorias de notícia'],
+	].map(([n, t]) => `<div class="stat"><b>${n}</b><span>${t}</span></div>`).join('');
+
+	function chips(containerId, key, options) {
+		const box = $(containerId);
+		options.forEach(([value, label, group]) => {
+			const b = document.createElement('button');
+			b.type = 'button'; b.className = group ? 'chip with-ico' : 'chip'; b.dataset.value = value;
+			b.innerHTML = (group ? icon(group, 'sm') : '') + esc(label);
+			b.setAttribute('aria-pressed', 'false');
+			b.addEventListener('click', () => { state[key] = state[key] === value ? null : value; render(); });
+			box.appendChild(b);
+		});
+	}
+	chips('f-grupo', 'grupo', groups.map(g => [g.slug, g.label, g]));
+	chips('f-objetivo', 'objetivo', objectives.map(o => [o.slug, o.label]));
+	chips('f-categoria', 'categoria', categories.map(c => [c.slug, c.label]));
+	chips('f-coleta', 'coleta', Object.entries(methods).map(([k, v]) => [k, v.label]));
+
+	$('q').addEventListener('input', e => { state.q = e.target.value.trim().toLocaleLowerCase('pt-BR'); render(); });
+	$('reset').addEventListener('click', () => { Object.assign(state, { q: '', grupo: null, objetivo: null, categoria: null, coleta: null }); $('q').value = ''; render(); });
+
+	function card(s) {
+		const objs = s.objetivos_tabela.map(o => `<span class="tag" title="Vínculo das planilhas de objetivos">${esc(objLabel[o])}</span>`)
+			.concat(s.objetivos_inferidos.map(o => `<span class="tag inferida" title="Vínculo inferido, pendente de revisão">${esc(objLabel[o])}</span>`)).join('');
+		const cats = s.categorias.map(c => `<span class="tag cat">${esc(categories.find(x => x.slug === c).label)}</span>`).join('');
+		const region = s.prioridade_regiao_uf ? `<span class="region" title="Prioridade quando a notícia é sobre ${esc(s.prioridade_regiao_uf)}">${esc(s.prioridade_regiao_uf)} ${'●'.repeat(s.prioridade_regiao)}</span>` : '';
+		const feed = s.feed_url ? `<a class="url feed" href="${esc(s.feed_url)}" target="_blank" rel="noopener noreferrer">feed: ${esc(s.feed_url.replace(/^https:\/\//, ''))}</a>` : '';
+		return `<article class="source-card">
+			<div class="card-top"><span class="card-kind" style="--c:${groupOf[s.grupo].color}" title="${esc(groupOf[s.grupo].label)}">${icon(groupOf[s.grupo])}<span class="card-type">${esc(types[s.tipo])}</span></span><span class="method ${esc(s.metodo_coleta)}" title="${esc(methods[s.metodo_coleta].help)}">${esc(methods[s.metodo_coleta].label)}</span></div>
+			<h3>${esc(s.nome)}</h3>
+			<a class="url" href="${esc(s.site_url)}" target="_blank" rel="noopener noreferrer">${esc(s.site_url.replace(/^https:\/\//, ''))}</a>
+			${feed}
+			<dl class="meta">
+				<dt>Escopo</dt><dd>${esc(s.escopo)} · ${esc(s.idioma.toUpperCase())}</dd>
+				<dt>Prioridade</dt><dd><span class="dots" title="${levels[s.prioridade]}">${dots(s.prioridade)}</span>${region}</dd>
+				<dt>Confiab.</dt><dd><span class="dots" title="${levels[s.confiabilidade]}">${dots(s.confiabilidade)}</span></dd>
+			</dl>
+			<p class="use">${esc(s.melhor_uso)}</p>
+			<div class="tag-group"><span>Objetivos</span><div class="tags">${objs}</div></div>
+			<div class="tag-group"><span>Categorias</span><div class="tags">${cats}</div></div>
+		</article>`;
+	}
+
+	function render() {
+		document.querySelectorAll('.chip').forEach(b => {
+			const key = b.parentElement.id.replace('f-', '');
+			b.setAttribute('aria-pressed', String(state[key] === b.dataset.value));
+		});
+		const list = sources.filter(s =>
+			(!state.grupo || s.grupo === state.grupo) &&
+			(!state.objetivo || s.objetivos_tabela.includes(state.objetivo) || s.objetivos_inferidos.includes(state.objetivo)) &&
+			(!state.categoria || s.categorias.includes(state.categoria)) &&
+			(!state.coleta || s.metodo_coleta === state.coleta) &&
+			(!state.q || [s.nome, s.site_url, types[s.tipo], s.escopo, s.melhor_uso].join(' ').toLocaleLowerCase('pt-BR').includes(state.q)));
+		$('count').innerHTML = `<b>${list.length}</b> de ${sources.length} fontes`;
+		$('grid').innerHTML = list.length ? list.map(card).join('') : '<div class="empty">Nenhuma fonte corresponde aos filtros.</div>';
+	}
+
+	const has = (s, o) => s.objetivos_tabela.includes(o) || s.objetivos_inferidos.includes(o);
+	$('objetivos-grid').innerHTML = objectives.map((o, i) => {
+		const n = sources.filter(s => has(s, o.slug)).length;
+		const origin = o.nomes_originais.length ? `Nas planilhas: ${o.nomes_originais.map(esc).join(' · ')}` : 'Objetivo novo, sem equivalente nas planilhas; todos os vínculos são inferidos.';
+		return `<article class="explain-card"><div class="card-type"><span>Objetivo ${String(i + 1).padStart(2, '0')}</span><b>${n} fontes</b></div><h3>${esc(o.label)}</h3><p>${esc(o.long)}</p><p class="origin">${origin}</p></article>`;
+	}).join('');
+	$('categorias-grid').innerHTML = categories.map(c => {
+		const n = sources.filter(s => s.categorias.includes(c.slug)).length;
+		return `<article class="explain-card cat"><div class="card-type"><span>Categoria</span><b>${n} fontes</b></div><h3>${esc(c.label)}</h3><p>${esc(c.description)}</p></article>`;
+	}).join('');
+
+	$('grupos-grid').innerHTML = groups.map(g => {
+		const n = sources.filter(s => s.grupo === g.slug).length;
+		return `<div class="group-pill">${icon(g)}<div><strong>${esc(g.label)}</strong> <small>${n}</small><p>${g.tipos.map(t => esc(types[t])).join(' · ')}</p></div></div>`;
+	}).join('');
+
+	render();
+})();
+</script>
+</body>
+</html>

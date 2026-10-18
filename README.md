@@ -77,6 +77,8 @@ O cron da Vercel chama `/api/cron/sync` com `Authorization: Bearer $CRON_SECRET`
 
 O Radar em `/radar` usa as fontes RSS cadastradas em `news_sources`. O cron `/api/cron/news` coleta apenas metadados e trechos oferecidos pelos feeds, elimina URLs repetidas e usa a Responses API com saída estruturada para traduzir, resumir e classificar cada card. Configure `OPENAI_API_KEY`; `OPENAI_NEWS_MODEL` permite trocar o modelo sem alterar código. Cada card preserva o link para a matéria original.
 
+O catálogo de fontes do Radar vive em `data/news_sources.csv` e `data/news_objectives.csv`, com objetivos, categorias, tipo, prioridade, confiabilidade e método de coleta em pt-BR. Depois de editar os CSVs, gere uma nova migration com `npm run news:catalog-sql > supabase/migrations/<timestamp>_news_catalog_seed.sql`; o script valida o catálogo antes de gerar o SQL. Fontes novas entram inativas. O plano de evolução do Radar está em `docs/radar/PLANO.md`.
+
 ## Pipeline geoespacial
 
 O diretório `geospatial/` produz uma imagem Docker com dois modos:

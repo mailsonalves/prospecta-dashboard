@@ -17,3 +17,5 @@ geospatial/__pycache__/
 
 .vercel
 .env*.local
+
+reports/tmp/
