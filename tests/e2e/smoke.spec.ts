@@ -25,7 +25,7 @@ test("news radar supports curated cards and filters", async ({ page }) => {
 
 test("homepage opens a simulated summary and the full archive", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByRole("link", { name: /ver blog completo/i })).toHaveAttribute("href", "/radar");
+  await expect(page.getByRole("link", { name: /ver acervo de notícias/i })).toHaveAttribute("href", "/radar");
   await page.getByRole("link", { name: /fosfato baiano/i }).click();
   await expect(page.getByText(/modo demonstração/i)).toBeVisible();
   await page.getByRole("link", { name: /voltar ao acervo/i }).click();

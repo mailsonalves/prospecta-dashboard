@@ -15,10 +15,15 @@ const groupIcons: Record<SourceGroupIcon, LucideIcon> = {
 export function NewsSourcesFooter({ sources }: { sources: CatalogSourceLink[] }) {
   return (
     <section className="sources-footer" aria-label="Catálogo de fontes">
-      <div className="sources-footer-head">
-        <h2>Fontes por grupo</h2>
-        <a href="/radar/fontes">Ver catálogo completo</a>
+      <div className="catalog-cta">
+        <div>
+          <h2>Catálogo de fontes</h2>
+          <p>Grupos, ícones, objetivos e categorias de cada veículo.</p>
+        </div>
+        <a className="catalog-cta-button" href="/radar/fontes">Abrir catálogo de fontes</a>
       </div>
+      <details className="sources-disclosure">
+        <summary>Mostrar {sources.length} fontes</summary>
       <div className="source-groups">
         {sourceGroups.map((group) => {
           const items = sources.filter((source) => source.group === group.slug);
@@ -37,6 +42,7 @@ export function NewsSourcesFooter({ sources }: { sources: CatalogSourceLink[] })
           );
         })}
       </div>
+      </details>
     </section>
   );
 }

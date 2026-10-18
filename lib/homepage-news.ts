@@ -24,11 +24,11 @@ export function renderRecentNewsCards(items: NewsItem[], limit = 3) {
     .map((item) => {
       const demo = item.simulated ? `<div class="blog-card-tags"><span>Demonstração</span></div>` : "";
       return `<a class="blog-card blog-card-news" href="/radar/${escapeHtml(item.id)}">
-        <div class="blog-card-head"><span class="blog-src">${escapeHtml(item.source)}</span><span class="blog-ref">${escapeHtml(formatDate(item.publishedAt))}</span></div>
+        <div class="blog-card-head"><span class="news-mark" aria-hidden="true"></span><span class="blog-src">${escapeHtml(item.source)}</span><span class="blog-ref">${escapeHtml(formatDate(item.publishedAt))}</span></div>
         <h3 class="blog-card-title">${escapeHtml(item.title)}</h3>
         <p class="sector-preview">${escapeHtml(previewText(item.summary, 140))}</p>
         ${demo}
-        <div class="blog-card-more">Ler resumo →</div>
+        <div class="blog-card-more">Abrir o resumo</div>
       </a>`;
     })
     .join("");
@@ -38,9 +38,9 @@ export function renderNewsSourcesFooter(sources: CatalogSourceLink[]) {
   const groups = sourceGroups.map((group) => {
     const items = sources.filter((source) => source.group === group.slug).map((source) => `<li><a href="${escapeHtml(source.siteUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(source.name)}</a></li>`).join("");
     if (!items) return "";
-    return `<section><h3>${escapeHtml(group.label)}</h3><ul>${items}</ul></section>`;
+    return `<section class="source-group"><h3>${escapeHtml(group.label)}</h3><ul>${items}</ul></section>`;
   }).join("");
-  return `<aside class="sources-footer" aria-label="Catálogo de fontes"><h2>Fontes por grupo</h2><p>O <a href="/radar/fontes">catálogo completo</a> traz objetivos, categorias e o método de coleta de cada fonte.</p>${groups}</aside>`;
+  return `<aside class="sources-footer" aria-label="Catálogo de fontes"><div class="catalog-cta"><div><h2>Catálogo de fontes</h2><p>Grupos, ícones, objetivos e categorias de cada veículo. É a página do radar de fontes.</p></div><a class="catalog-cta-button" href="/radar/fontes">Abrir catálogo de fontes</a></div><details class="sources-disclosure"><summary>Mostrar ${sources.length} fontes</summary><div class="source-groups">${groups}</div></details></aside>`;
 }
 
 export function applyHomepageNews(markup: string, items: NewsItem[], sources: CatalogSourceLink[] = []) {
@@ -55,9 +55,10 @@ export function applyHomepageNews(markup: string, items: NewsItem[], sources: Ca
     `<div class="blog-ver-link reveal" style="animation-delay:0.2s">
         <a href="/blog" class="blog-ver-btn blog-ver-btn-news">Ver blog completo →</a>
       </div>`,
-    `<div class="blog-ver-link reveal" style="animation-delay:0.2s;gap:10px;flex-wrap:wrap">
-        <a href="/blog" class="blog-ver-btn">Conteúdo editorial →</a>
-        <a href="/radar" class="blog-ver-btn blog-ver-btn-news">Ver blog completo →</a>
+    `<div class="blog-ver-link reveal news-routes" style="animation-delay:0.2s">
+        <a href="/blog" class="blog-ver-btn">Publicações da equipe</a>
+        <a href="/radar" class="blog-ver-btn blog-ver-btn-news">Ver acervo de notícias</a>
+        <p class="news-routes-note">Publicações da equipe são textos do Prospecta. O acervo reúne notícias de outras fontes.</p>
       </div>
       ${renderNewsSourcesFooter(sources)}`
   );

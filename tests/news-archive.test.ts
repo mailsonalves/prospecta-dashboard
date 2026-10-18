@@ -50,18 +50,21 @@ describe("acervo de notícias", () => {
   it("coloca as recentes na home e leva o blog completo ao radar", () => {
     const html = applyHomepageNews(homepage, seedNews, catalog);
     expect(html).toContain('href="/radar/demo-fosfato-bahia"');
-    expect(html).toContain("Ver blog completo");
+    expect(html).toContain("Ver acervo de notícias");
+    expect(html).toContain("Publicações da equipe");
+    expect(html).toContain("Abrir catálogo de fontes");
+    expect(html).toContain("Mostrar 5 fontes");
     expect(html).toContain('href="/radar" class="blog-ver-btn blog-ver-btn-news"');
     expect(html).toContain('data-id="news1"');
     expect(html).toContain('href="/blog"');
     expect(html).toContain("Demonstração");
-    expect(html).toContain("Fontes por grupo");
+    expect(html).toContain("Catálogo de fontes");
     expect(html).toContain("Imprensa e jornais");
     expect(html).toContain("Associações e eventos");
     expect(html).toContain("https://www.poder360.com.br");
     expect(html).toContain("Brasil Mineral");
     const fromWindows = applyHomepageNews(homepage.replaceAll("\n", "\r\n"), seedNews, catalog);
-    expect(fromWindows).toContain("Fontes por grupo");
+    expect(fromWindows).toContain("Catálogo de fontes");
   });
 
   it("liga a notícia ao grupo do catálogo do professor", () => {

@@ -27,6 +27,21 @@ npm run dev
 
 Sem credenciais, site, blog e dashboard abrem em **modo demonstração** com o conjunto inicial tipado em `lib/seed.ts`. Gravações administrativas ficam bloqueadas até o Supabase ser configurado.
 
+## Abrir o dashboard por esta branch
+
+O dashboard completo desta branch não está no site publicado. Ele abre no servidor local, com a branch `feat/acervo-noticias-front` selecionada.
+
+```powershell
+git fetch origin
+git switch feat/acervo-noticias-front
+npm install
+npm run dev
+```
+
+Depois abra http://localhost:3000/dashboard.
+
+A partir da página inicial, o botão **Abrir Dashboard Completo** também chega nesse endereço. Dentro do dashboard, a seta ou o logo **PROSPECTA 4.0** voltam ao início. No menu de cima, **Radar** abre o acervo em http://localhost:3000/radar. O catálogo de fontes fica em http://localhost:3000/radar/fontes.
+
 Verificações disponíveis:
 
 ```powershell
@@ -77,7 +92,7 @@ O cron da Vercel chama `/api/cron/sync` com `Authorization: Bearer $CRON_SECRET`
 
 O Radar em `/radar` usa as fontes RSS cadastradas em `news_sources`. O cron `/api/cron/news` coleta apenas metadados e trechos oferecidos pelos feeds, elimina URLs repetidas e usa a Responses API com saída estruturada para traduzir, resumir e classificar cada card. Configure `OPENAI_API_KEY`; `OPENAI_NEWS_MODEL` permite trocar o modelo sem alterar código. Cada card preserva o link para a matéria original. Itens antigos permanecem: a inserção ignora `source_url` repetida e não apaga o histórico.
 
-O frontend lê `GET /api/news` e a função `getPublishedNews()`. Cada item expõe `id`, `title`, `summary`, `source`, `sourceUrl`, `publishedAt`, `category`, `minerals`, `keywords` e `relevance`. A home mostra as três mais recentes; o clique abre `/radar/[id]` com o resumo; “Ler notícia original” abre `sourceUrl` em nova aba; “Ver blog completo” vai para `/radar`, onde busca, fonte, intervalo de datas, ordenação e paginação se combinam. Sem Supabase, a interface usa o acervo simulado de `lib/seed.ts`, identificado na tela como demonstração. As 27 fontes aprovadas estão em `lib/news-sources.ts`. O cadastro dos feeds e a autorização dos domínios na coleta continuam com o backend.
+O frontend lê `GET /api/news` e a função `getPublishedNews()`. Cada item expõe `id`, `title`, `summary`, `source`, `sourceUrl`, `publishedAt`, `category`, `minerals`, `keywords` e `relevance`. A home mostra as três mais recentes; o clique abre `/radar/[id]` com o resumo; “Ler notícia original” abre `sourceUrl` em nova aba; “Ver acervo de notícias” vai para `/radar`, onde busca, fonte, intervalo de datas, ordenação e paginação se combinam. Sem Supabase, a interface usa o acervo simulado de `lib/seed.ts`, identificado na tela como demonstração. As 27 fontes aprovadas estão em `lib/news-sources.ts`. O cadastro dos feeds e a autorização dos domínios na coleta continuam com o backend.
 
 O catálogo de fontes do Radar vive em `data/news_sources.csv` e `data/news_objectives.csv`, com objetivos, categorias, tipo, prioridade, confiabilidade e método de coleta em pt-BR. Depois de editar os CSVs, gere uma nova migration com `npm run news:catalog-sql > supabase/migrations/<timestamp>_news_catalog_seed.sql`; o script valida o catálogo antes de gerar o SQL. Fontes novas entram inativas. O plano de evolução do Radar está em `docs/radar/PLANO.md`.
 
