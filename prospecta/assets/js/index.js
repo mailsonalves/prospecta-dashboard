@@ -167,7 +167,10 @@ if (contactForm) {
 	}
 
 	document.querySelectorAll('.blog-card').forEach(function(card) {
-		card.addEventListener('click', function() { openModal(card.dataset.id); });
+		card.addEventListener('click', function() {
+			if (card.tagName === 'A' || card.closest('a')) return;
+			openModal(card.dataset.id);
+		});
 	});
 
 	if (closeBtn) closeBtn.addEventListener('click', closeModal);
