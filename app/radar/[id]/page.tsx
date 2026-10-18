@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ExternalLink } from "lucide-react";
 import { NewsSourcesFooter } from "@/components/news-sources-footer";
+import { ReturnHomeLink } from "@/components/return-home-link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { loadNewsCatalog } from "@/lib/load-news-catalog";
@@ -27,13 +28,19 @@ export default async function NewsSummaryPage({ params }: Props) {
   const published = new Date(item.publishedAt).toLocaleDateString("pt-BR", { timeZone: "UTC" });
 
   return <><SiteHeader/><main className="article-shell">
-    <Link className="text-link" href="/radar">← Voltar ao acervo</Link>
-    <div className="article-meta" style={{ marginTop: 55 }}>{item.source} · {published}</div>
+    <nav className="summary-nav" aria-label="Voltar">
+      <ReturnHomeLink />
+      <Link className="text-link" href="/radar">← Voltar ao acervo</Link>
+    </nav>
+    <div className="article-meta">{item.source} · {published}</div>
     <h1>{item.title}</h1>
     {simulated && <p className="demo-banner">Modo demonstração. Este resumo é simulado para validar a interface e não é uma notícia publicada. O botão abaixo abre o site da fonte cadastrada.</p>}
     <p className="lead">Resumo</p>
     <div className="article-body"><p>{item.summary}</p></div>
     {item.minerals.length > 0 && <div className="article-tags">{item.minerals.map((mineral) => <span className="tag" key={mineral}>{mineral}</span>)}</div>}
-    <p className="summary-actions"><a className="button" href={item.sourceUrl} target="_blank" rel="noopener noreferrer">Ler notícia original <ExternalLink size={16}/></a></p>
+    <nav className="summary-nav summary-nav-bottom" aria-label="Voltar e abrir a notícia">
+      <ReturnHomeLink />
+      <a className="button" href={item.sourceUrl} target="_blank" rel="noopener noreferrer">Ler notícia original <ExternalLink size={16}/></a>
+    </nav>
   </main><NewsSourcesFooter sources={catalog}/><SiteFooter/></>;
 }

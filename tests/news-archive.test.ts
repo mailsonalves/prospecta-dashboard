@@ -50,6 +50,10 @@ describe("acervo de notícias", () => {
   it("coloca as recentes na home e leva o blog completo ao radar", () => {
     const html = applyHomepageNews(homepage, seedNews, catalog);
     expect(html).toContain('href="/radar/demo-fosfato-bahia"');
+    expect(html).toContain("Abrir o resumo");
+    expect(html).toContain("Ler notícia original");
+    expect(html).toContain('href="https://bahiaeconomica.com.br" target="_blank"');
+    expect(html).toContain("prospecta-home-return");
     expect(html).toContain("Ver acervo de notícias");
     expect(html).toContain("Publicações da equipe");
     expect(html).toContain("Abrir catálogo de fontes");

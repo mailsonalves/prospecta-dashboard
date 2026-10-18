@@ -23,13 +23,20 @@ export function renderRecentNewsCards(items: NewsItem[], limit = 3) {
     .slice(0, limit)
     .map((item) => {
       const demo = item.simulated ? `<div class="blog-card-tags"><span>Demonstração</span></div>` : "";
-      return `<a class="blog-card blog-card-news" href="/radar/${escapeHtml(item.id)}">
+      const summaryHref = `/radar/${escapeHtml(item.id)}`;
+      const rememberPlace = `onclick="try{sessionStorage.setItem('prospecta-home-return',String(window.scrollY))}catch(e){}"`;
+      return `<div class="news-entry">
+        <a class="blog-card blog-card-news" href="${summaryHref}" ${rememberPlace}>
         <div class="blog-card-head"><span class="news-mark" aria-hidden="true"></span><span class="blog-src">${escapeHtml(item.source)}</span><span class="blog-ref">${escapeHtml(formatDate(item.publishedAt))}</span></div>
         <h3 class="blog-card-title">${escapeHtml(item.title)}</h3>
         <p class="sector-preview">${escapeHtml(previewText(item.summary, 140))}</p>
         ${demo}
-        <div class="blog-card-more">Abrir o resumo</div>
-      </a>`;
+      </a>
+        <div class="news-actions">
+          <a class="news-summary" href="${summaryHref}" ${rememberPlace}>Abrir o resumo</a>
+          <a class="news-direct" href="${escapeHtml(item.sourceUrl)}" target="_blank" rel="noopener noreferrer">Ler notícia original</a>
+        </div>
+      </div>`;
     })
     .join("");
 }
@@ -49,7 +56,7 @@ export function applyHomepageNews(markup: string, items: NewsItem[], sources: Ca
   const cards = renderRecentNewsCards(items);
   const injected = `${marker}
       <div class="blog-grid reveal" id="noticias-recentes">${cards}</div>
-      <p class="section-lead sector-note">As mais recentes abrem o resumo dentro do Prospecta. No modo demonstração, os textos são simulados e não são matérias publicadas.</p>`;
+      <p class="section-lead sector-note">Abrir o resumo mostra o texto dentro do Prospecta. Ler notícia original abre a fonte em um clique. No modo demonstração, os textos são simulados e não são matérias publicadas.</p>`;
   const withCards = source.includes(marker) ? source.replace(marker, injected) : source;
   return withCards.replace(
     `<div class="blog-ver-link reveal" style="animation-delay:0.2s">

@@ -40,8 +40,18 @@ export default async function HomePage() {
       <style>{`
         a.blog-card{color:inherit;text-decoration:none}
         .sector-note{margin-top:22px}
+        .legacy-home .news-entry{display:flex;flex-direction:column;background:#f7f3e8;color:#16231d;border:1px solid #eadcbe;border-radius:10px;box-shadow:0 16px 36px rgba(0,0,0,.22);overflow:hidden;transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+        .legacy-home .news-entry:hover{background:#fffdf8;transform:translateY(-6px);box-shadow:0 22px 44px rgba(0,0,0,.28)}
         .legacy-home a.blog-card-news{background:#f7f3e8;color:#16231d;border:1px solid #eadcbe;box-shadow:0 16px 36px rgba(0,0,0,.22)}
+        .legacy-home .news-entry a.blog-card-news{background:transparent;border:0;box-shadow:none;border-radius:0}
         .legacy-home a.blog-card-news:hover{background:#fffdf8;transform:translateY(-6px);box-shadow:0 22px 44px rgba(0,0,0,.28)}
+        .legacy-home .news-entry a.blog-card-news:hover,.legacy-home .news-entry:hover a.blog-card-news{background:transparent;transform:none;box-shadow:none}
+        .legacy-home .news-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 16px 16px}
+        .legacy-home .news-summary,.legacy-home .news-direct{display:flex;align-items:center;justify-content:center;min-height:44px;padding:8px 10px;border-radius:8px;font-size:.78rem;font-weight:800;line-height:1.2;text-align:center;text-decoration:none}
+        .legacy-home .news-summary{background:#16231d;color:#f8f4e9}
+        .legacy-home .news-summary:hover{background:#0c1612;color:#fff}
+        .legacy-home .news-direct{margin:0;background:transparent;color:#16231d;border:1px solid #16231d}
+        .legacy-home .news-direct:hover{background:#16231d;color:#f8f4e9}
         .legacy-home a.blog-card-news .blog-card-title{color:#16231d;font-size:1.22rem}
         .legacy-home a.blog-card-news .blog-src{color:#16231d}
         .legacy-home a.blog-card-news .blog-ref,.legacy-home a.blog-card-news .blog-card-more{color:#3c4842}
@@ -66,7 +76,7 @@ export default async function HomePage() {
         .legacy-home .mineral-card:hover,.legacy-home .tech-item:hover,.legacy-home .team-card:hover,.legacy-home .mission-card:hover{transform:translateY(-4px)}
         .legacy-home a:focus-visible,.legacy-home button:focus-visible{outline:3px solid #b7d36b;outline-offset:3px}
         @media(max-width:700px){.legacy-home .catalog-cta{flex-direction:column;align-items:stretch}}
-        @media(prefers-reduced-motion:reduce){.legacy-home .mineral-card,.legacy-home .tech-item,.legacy-home .team-card,.legacy-home .mission-card,.legacy-home a.blog-card-news,.legacy-home .catalog-cta-button{transition:none}.legacy-home .mineral-card:hover,.legacy-home .tech-item:hover,.legacy-home .team-card:hover,.legacy-home .mission-card:hover,.legacy-home a.blog-card-news:hover,.legacy-home .catalog-cta-button:hover{transform:none}}
+        @media(prefers-reduced-motion:reduce){.legacy-home .mineral-card,.legacy-home .tech-item,.legacy-home .team-card,.legacy-home .mission-card,.legacy-home a.blog-card-news,.legacy-home .news-entry,.legacy-home .catalog-cta-button{transition:none}.legacy-home .mineral-card:hover,.legacy-home .tech-item:hover,.legacy-home .team-card:hover,.legacy-home .mission-card:hover,.legacy-home a.blog-card-news:hover,.legacy-home .news-entry:hover,.legacy-home .catalog-cta-button:hover{transform:none}}
       `}</style>
       <div
         className="legacy-home"
