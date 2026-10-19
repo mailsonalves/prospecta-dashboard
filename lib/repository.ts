@@ -3,6 +3,11 @@ import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { seedDashboard, seedNews, seedPosts } from "@/lib/seed";
 import type { DashboardData, NewsItem, Post } from "@/lib/types";
 
+export interface NewsFeed {
+  items: NewsItem[];
+  origin: "database" | "demonstration";
+}
+
 async function queryPublishedPosts(): Promise<Post[]> {
   const db = createSupabaseAdminClient();
   if (!db) return seedPosts;
@@ -41,32 +46,40 @@ export async function getPostBySlug(slug: string) {
   return posts.find((post) => post.slug === slug) ?? null;
 }
 
-async function queryPublishedNews(): Promise<NewsItem[]> {
+async function queryPublishedNews(): Promise<NewsFeed> {
   const db = createSupabaseAdminClient();
-  if (!db) return seedNews;
+  if (!db) return { items: seedNews, origin: "demonstration" };
   try {
-    const { data, error } = await db.from("news_items_public").select("*").order("published_at", { ascending: false }).limit(60);
+    const { data, error } = await db.from("news_items_public").select("*").order("published_at", { ascending: false }).limit(1000);
     if (error) throw error;
-    return (data ?? []).map((row) => ({
-      id: row.id,
-      title: row.title_pt,
-      summary: row.summary_pt,
-      source: row.source_name,
-      sourceUrl: row.source_url,
-      imageUrl: row.image_url,
-      publishedAt: row.published_at,
-      category: row.category,
-      minerals: row.minerals ?? [],
-      keywords: row.keywords ?? [],
-      relevance: row.relevance
-    }));
+    return {
+      origin: "database",
+      items: (data ?? []).map((row) => ({
+        id: row.id,
+        title: row.title_pt,
+        summary: row.summary_pt,
+        source: row.source_name,
+        sourceUrl: row.source_url,
+        imageUrl: row.image_url,
+        publishedAt: row.published_at,
+        category: row.category,
+        minerals: row.minerals ?? [],
+        keywords: row.keywords ?? [],
+        relevance: row.relevance
+      }))
+    };
   } catch (error) {
     console.warn("Could not load news radar from Supabase; using seed data.", error);
-    return seedNews;
+    return { items: seedNews, origin: "demonstration" };
   }
 }
 
-export const getPublishedNews = unstable_cache(queryPublishedNews, ["news-radar-v1"], { revalidate: 600, tags: ["news-radar"] });
+export const getPublishedNews = unstable_cache(queryPublishedNews, ["news-radar-v2"], { revalidate: 600, tags: ["news-radar"] });
+
+export async function getNewsById(id: string) {
+  const feed = await getPublishedNews();
+  return { item: feed.items.find((item) => item.id === id) ?? null, origin: feed.origin };
+}
 
 async function queryDashboard(): Promise<DashboardData> {
   const db = createSupabaseAdminClient();

@@ -1,42 +1,154 @@
 import type { DashboardData, ImageryPeriod, NewsItem, Occurrence, Post, Region } from "@/lib/types";
 
+function demoNews(item: Omit<NewsItem, "simulated">): NewsItem {
+  return { ...item, simulated: true };
+}
+
 export const seedNews: NewsItem[] = [
-  {
+  demoNews({
+    id: "demo-fosfato-bahia",
+    title: "Fosfato baiano entra em pauta de pesquisa mineral",
+    summary: "Texto simulado para demonstração da interface. Um resumo real condensaria o fato principal sobre fosfato, a fonte e a relação com a pesquisa geológica na Bahia.",
+    source: "Bahia Econômica",
+    sourceUrl: "https://bahiaeconomica.com.br",
+    publishedAt: "2026-10-16T12:00:00.000Z",
+    category: "exploracao",
+    minerals: ["Fosfato"],
+    keywords: ["fosfato", "Bahia", "pesquisa mineral"],
+    relevance: 90
+  }),
+  demoNews({
+    id: "demo-litio",
+    title: "Lítio segue entre os minerais acompanhados pela pesquisa",
+    summary: "Texto simulado para demonstração da interface. Quando houver matéria real, o resumo descreverá o contexto do lítio sem copiar a reportagem.",
+    source: "Brasil Mineral",
+    sourceUrl: "https://brasilmineral.com.br",
+    publishedAt: "2026-10-12T12:00:00.000Z",
+    category: "mercado",
+    minerals: ["Lítio"],
+    keywords: ["lítio", "minerais estratégicos", "mercado"],
+    relevance: 88
+  }),
+  demoNews({
+    id: "demo-cobre",
+    title: "Cobre aparece em discussões sobre tecnologia mineral",
+    summary: "Texto simulado para demonstração da interface. Serve para testar cards, ordenação e abertura do resumo dentro do Prospecta.",
+    source: "Revista Minérios",
+    sourceUrl: "https://revistaminerios.com.br",
+    publishedAt: "2026-10-02T12:00:00.000Z",
+    category: "tecnologia",
+    minerals: ["Cobre"],
+    keywords: ["cobre", "tecnologia mineral"],
+    relevance: 84
+  }),
+  demoNews({
+    id: "demo-niquel",
+    title: "Níquel permanece no radar de minerais estratégicos",
+    summary: "Texto simulado para demonstração da interface. Não representa uma publicação do IBRAM nem substitui o conteúdo original de uma fonte.",
+    source: "IBRAM",
+    sourceUrl: "https://ibram.org.br",
+    publishedAt: "2026-09-18T12:00:00.000Z",
+    category: "politica",
+    minerals: ["Níquel"],
+    keywords: ["níquel", "minerais estratégicos"],
+    relevance: 83
+  }),
+  demoNews({
+    id: "demo-terras-raras-sgb",
+    title: "Terras-raras seguem como tema de mapeamento geológico",
+    summary: "Texto simulado para demonstração da interface. O acervo real deve guardar o resumo da IA e o endereço da matéria, sem apagar itens antigos.",
+    source: "SGB",
+    sourceUrl: "https://sgb.gov.br",
+    publishedAt: "2026-09-02T12:00:00.000Z",
+    category: "exploracao",
+    minerals: ["Terras-raras"],
+    keywords: ["terras-raras", "mapeamento", "geologia"],
+    relevance: 92
+  }),
+  demoNews({
+    id: "demo-valor-politica",
+    title: "Política mineral entra no noticiário econômico",
+    summary: "Texto simulado para demonstração da interface. O link externo abre o site da fonte cadastrada, não uma matéria específica inventada.",
+    source: "Valor Econômico",
+    sourceUrl: "https://valor.globo.com",
+    publishedAt: "2026-08-20T12:00:00.000Z",
+    category: "politica",
+    minerals: ["Terras-raras", "Lítio"],
+    keywords: ["política mineral", "economia"],
+    relevance: 80
+  }),
+  demoNews({
     id: "demo-critical-minerals",
     title: "Minerais críticos ganham espaço nas estratégias de transição energética",
-    summary: "Novos investimentos aproximam pesquisa geológica, cadeias de suprimento e tecnologias de baixo carbono. Para o Brasil, o movimento amplia a importância de dados territoriais confiáveis e de projetos de exploração responsáveis.",
-    source: "Prospecta Radar",
-    sourceUrl: "https://www.mining.com/",
+    summary: "Texto simulado para demonstração da interface. Novos investimentos aproximam pesquisa geológica, cadeias de suprimento e tecnologias de baixo carbono.",
+    source: "Exame",
+    sourceUrl: "https://exame.com",
     publishedAt: "2026-08-08T12:00:00.000Z",
     category: "mercado",
     minerals: ["Terras-raras", "Níquel", "Cobre"],
     keywords: ["transição energética", "minerais críticos", "cadeia de suprimento"],
     relevance: 94
-  },
-  {
+  }),
+  demoNews({
     id: "demo-ai-exploration",
     title: "IA acelera a seleção de alvos na exploração mineral",
-    summary: "Modelos que combinam dados geológicos, geoquímicos e imagens de satélite estão reduzindo o universo de áreas prioritárias. A tecnologia apoia decisões de campo, mas continua dependente de validação técnica e dados de qualidade.",
-    source: "Prospecta Radar",
-    sourceUrl: "https://im-mining.com/",
+    summary: "Texto simulado para demonstração da interface. Modelos que combinam dados geológicos e imagens de satélite ilustram o tema de inteligência artificial na exploração mineral.",
+    source: "Notícias de Mineração",
+    sourceUrl: "https://noticiasdemineracao.com",
     publishedAt: "2026-08-06T12:00:00.000Z",
     category: "tecnologia",
-    minerals: ["Cobre", "Ouro"],
+    minerals: ["Cobre"],
     keywords: ["inteligência artificial", "exploração mineral", "sensoriamento remoto"],
     relevance: 91
-  },
-  {
+  }),
+  demoNews({
     id: "demo-water-mining",
     title: "Gestão hídrica passa a orientar novos projetos de mineração",
-    summary: "Empresas e centros de pesquisa ampliam o uso de monitoramento remoto e recirculação para reduzir riscos hídricos. Indicadores ambientais comparáveis tornam-se parte central do planejamento e do licenciamento.",
-    source: "Prospecta Radar",
-    sourceUrl: "https://www.mining-technology.com/",
+    summary: "Texto simulado para demonstração da interface. O exemplo trata de monitoramento ambiental e licenciamento, sem apresentar uma reportagem real.",
+    source: "epbr",
+    sourceUrl: "https://epbr.com.br",
     publishedAt: "2026-08-03T12:00:00.000Z",
     category: "sustentabilidade",
     minerals: ["Fosfato"],
     keywords: ["água", "monitoramento ambiental", "licenciamento"],
     relevance: 86
-  }
+  }),
+  demoNews({
+    id: "demo-cbpm",
+    title: "Pesquisa geológica na Bahia continua como eixo do projeto",
+    summary: "Texto simulado para demonstração da interface. Permite testar o filtro por fonte institucional e o intervalo de datas mais antigo.",
+    source: "CBPM",
+    sourceUrl: "https://cbpm.ba.gov.br",
+    publishedAt: "2026-07-15T12:00:00.000Z",
+    category: "exploracao",
+    minerals: ["Fosfato", "Terras-raras"],
+    keywords: ["Bahia", "pesquisa geológica", "CBPM"],
+    relevance: 87
+  }),
+  demoNews({
+    id: "demo-finep",
+    title: "Fomento à pesquisa mineral aparece como tema de demonstração",
+    summary: "Texto simulado para demonstração da interface. Quando a coleta programada estiver ativa, este espaço receberá o resumo persistido no banco.",
+    source: "Finep",
+    sourceUrl: "https://finep.gov.br",
+    publishedAt: "2026-06-20T12:00:00.000Z",
+    category: "tecnologia",
+    minerals: ["Terras-raras"],
+    keywords: ["fomento", "pesquisa", "Finep"],
+    relevance: 79
+  }),
+  demoNews({
+    id: "demo-g1-contexto",
+    title: "Imprensa nacional entra no conjunto de fontes acompanhadas",
+    summary: "Texto simulado para demonstração da interface. A presença do item antigo mostra que o acervo não descarta notícias quando chegam registros mais novos.",
+    source: "G1",
+    sourceUrl: "https://g1.globo.com",
+    publishedAt: "2026-05-12T12:00:00.000Z",
+    category: "mercado",
+    minerals: ["Terras-raras", "Lítio", "Cobre", "Níquel", "Fosfato"],
+    keywords: ["imprensa", "minerais críticos", "acervo"],
+    relevance: 77
+  })
 ];
 
 export const seedPosts: Post[] = [

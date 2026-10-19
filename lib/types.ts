@@ -31,6 +31,8 @@ export interface NewsItem {
   minerals: string[];
   keywords: string[];
   relevance: number;
+  /** Presente apenas nos dados de demonstração. Itens do banco não usam este campo. */
+  simulated?: boolean;
 }
 
 export interface Region {
